@@ -6,8 +6,9 @@ import { equipment_features_data1, equipment_features_data2, equipment_howItWork
 import Layout from '../../../components/common/Layout';
 import SectionTitle from '../../../components/title/SectionTitle';
 import HowItWorks from '../../../components/how-it-works/HowItWorks';
-import CTAFooter from '../../../components/cta-footer/CTAFooter';
+import CTAFooter from '../../../components/cta-footer/CtaFooter';
 import Partners from '../../../components/partners/Partners';
+import { useAuthModal } from '../../../context/AuthModalContext';
 
 import CropsImage from '../../../assets/corps.jpg';
 import ForestImage from '../../../assets/forest.jpg';
@@ -15,6 +16,8 @@ import ForestImage from '../../../assets/forest.jpg';
 import './equipment.css';
 
 function Equipment() {
+    const { openLogin, openRegister } = useAuthModal();
+
     return (
         <Layout>
             {/* =============== HERO =============== */}
@@ -29,12 +32,12 @@ function Equipment() {
                     </p>
 
                     <div className="hero__equipment-buttons">
-                        <button type="button" className='hero__equipment-singin-btn'>
+                        <button type="button" className='hero__equipment-singin-btn' onClick={() => openLogin()}>
                             Log In
                         </button>
 
-                        <button type="button" className='hero__equipment-singup-btn'>
-                            Sing Up
+                        <button type="button" className='hero__equipment-singup-btn' onClick={() => openRegister('dealer')}>
+                            Sign Up
                         </button>
                     </div>
                 </div>

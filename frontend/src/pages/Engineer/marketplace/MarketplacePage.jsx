@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Bell, Check, Edit2, Trash2, Plus } from 'lucide-react';
 import './marketplace.css';
 import Footer from '../../../components/common/Footer/Footer';
 
-const PendingOrdersSection = ({ pendingOrders, products, setSelectedOrder, setShowOrderModal }) => {
+const PendingOrdersSection = ({ pendingOrders, setSelectedOrder, setShowOrderModal }) => {
   if (pendingOrders.length === 0) return null;
   return (
     <div className="pending-orders-section">
@@ -11,31 +11,26 @@ const PendingOrdersSection = ({ pendingOrders, products, setSelectedOrder, setSh
         <Bell className="bell-icon" /> Pending Orders ({pendingOrders.length})
       </h3>
       <div className="orders-list">
-        {pendingOrders.map(order => {
-          const product = products.find(product => product.id === order.productId);
-          const isInsufficientStock = product && order.quantity > product.quantity;
-          return (
-            <div key={order.id} className="order-card">
-              <div className="order-content">
-                <h4 className="farmer-name-market">{order.farmer}</h4>
-                <p className="product-name">{order.productName}</p>
-                <pre className="order-details">
-                  Quantity: {order.quantity} {order.unit} • Total: {order.totalPrice} SYP
-                </pre>
-                <p className="order-date">{order.date}</p>
-              </div>
-              <div className="order-actions">
-                <button
-                  onClick={() => { setSelectedOrder(order); setShowOrderModal(true); }}
-                  disabled={isInsufficientStock}
-                  className={`review-btn ${isInsufficientStock ? 'disabled' : ''}`}
-                >
-                  <Check size={18} /> Review
-                </button>
-              </div>
+        {pendingOrders.map(order => (
+          <div key={order.id} className="order-card">
+            <div className="order-content">
+              <h4 className="farmer-name-market">{order.farmer}</h4>
+              <p className="product-name">{order.productName}</p>
+              <pre className="order-details">
+                Quantity: {order.quantity} {order.unit} • Total: {order.totalPrice} SYP
+              </pre>
+              <p className="order-date">{order.date}</p>
             </div>
-          );
-        })}
+            <div className="order-actions">
+              <button
+                onClick={() => { setSelectedOrder(order); setShowOrderModal(true); }}
+                className="review-btn"
+              >
+                <Check size={18} /> Review
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -80,73 +75,66 @@ const ActiveOrdersSection = ({ activeOrders, handleShipOrder, handleDeliverOrder
   );
 };
 
-const ProductsSection = ({ products, orders, setEditingProduct, setShowProductModal, handleDeleteProduct, getCategoryColor, getCategoryLabel, getStatusColor }) => (
+const ProductsSection = ({ products, loading, error, categoryNameById, setEditingProduct, setShowProductModal, handleDeleteProduct }) => (
   <div className="products-section">
     <h3 className="section-title">My Products</h3>
+
+    {loading && <p className="dashboard-page__state">Loading your products…</p>}
+    {!loading && error && <p className="auth__error-message">{error}</p>}
+    {!loading && !error && products.length === 0 && (
+      <p className="dashboard-page__state">You haven't listed any products yet.</p>
+    )}
+
     <div className="products-grid">
-      {products.map(product => {
-        const productOrders = orders.filter(order => order.productId === product.id);
-        return (
-          <div key={product.id} className="product-card card">
-            <div className="product-header">
-              <div className="product-info">
-                <img src={product.image} alt={product.name} className="product-image" />
-                <div className="product-text">
-                  <h3 className="product-name">{product.name}</h3>
-                  <p className="product-price">{product.price} SYP</p>
-                  <p className={`product-stock ${product.quantity < 20 ? 'low-stock' : ''}`}>
-                    Stock: {product.quantity} {product.unit}
-                  </p>
-                  <span className={`category-badge ${getCategoryColor(product.category)}`}>
-                    {getCategoryLabel(product.category)}
-                  </span>
-                </div>
-              </div>
-              <div className="product-actions">
-                <button onClick={() => { setEditingProduct(product); setShowProductModal(true); }} className="edit-btn">
-                  <Edit2 size={18} />
-                </button>
-                <button onClick={() => handleDeleteProduct(product.id)} className="delete-btn">
-                  <Trash2 size={18} />
-                </button>
+      {products.map(product => (
+        <div key={product.product_id} className="product-card card">
+          <div className="product-header">
+            <div className="product-info">
+              {product.image_url ? (
+                <img src={product.image_url} alt={product.name} className="product-image" />
+              ) : (
+                <div className="product-image product-image--placeholder">No image</div>
+              )}
+              <div className="product-text">
+                <h3 className="product-name">{product.name}</h3>
+                <p className="product-price">{Number(product.purchased_product?.price ?? 0).toLocaleString()} SYP</p>
+                <p className={`product-stock ${Number(product.stock_quantity ?? 0) < 20 ? 'low-stock' : ''}`}>
+                  Stock: {product.stock_quantity ?? 0}
+                </p>
+                <span className="category-badge">
+                  {categoryNameById[product.category_id] ?? `Category #${product.category_id}`}
+                </span>
               </div>
             </div>
-
-            {productOrders.length > 0 && (
-              <div className="order-history">
-                <h4 className="history-title">Order History ({productOrders.length})</h4>
-                <div className="history-items">
-                  {productOrders.slice(0, 3).map(order => (
-                    <div key={order.id} className="history-item">
-                      <span className="history-farmer">{order.farmer} • {order.quantity} {product.unit}</span>
-                      <span className={`status-badge small ${getStatusColor(order.status)}`}>{order.status}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <div className="product-actions">
+              <button onClick={() => { setEditingProduct(product); setShowProductModal(true); }} className="edit-btn">
+                <Edit2 size={18} />
+              </button>
+              <button onClick={() => handleDeleteProduct(product.product_id)} className="delete-btn">
+                <Trash2 size={18} />
+              </button>
+            </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   </div>
 );
 
 const MarketplacePage = ({
-  orders, setOrders, products, setProducts,
+  products, loading, error,
+  categoryNameById,
   setShowProductModal, setEditingProduct,
-  showOrderModal, setShowOrderModal, selectedOrder, setSelectedOrder
+  handleDeleteProduct,
 }) => {
+  const [orders, setOrders] = useState([]);
+  const [showOrderModal, setShowOrderModal] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
   const pendingOrders = orders.filter(order => order.status === 'pending');
   const activeOrders = orders.filter(order => order.status === 'processing' || order.status === 'on-way');
 
   const handleApproveOrder = (orderId) => {
-    const order = orders.find(order => order.id === orderId);
-    const product = products.find(product => product.id === order.productId);
-    if (order.quantity > product.quantity) {
-      alert(`Cannot approve order: Requested quantity (${order.quantity} ${order.unit}) exceeds available stock (${product.quantity} ${product.unit})`);
-      return;
-    }
     const now = new Date().toISOString().slice(0, 16).replace('T', ' ');
     setOrders(prevOrders =>
       prevOrders.map(order =>
@@ -181,8 +169,6 @@ const MarketplacePage = ({
     );
   };
 
-  const handleDeleteProduct = (id) => setProducts(products.filter(product => product.id !== id));
-
   const getStatusColor = (status) => {
     switch(status) {
       case 'pending': return 'pending';
@@ -193,28 +179,10 @@ const MarketplacePage = ({
     }
   };
 
-  const getCategoryLabel = (category) => {
-    switch(category) {
-      case 'seeds': return 'Seeds';
-      case 'fertilizer': return 'Fertilizer';
-      case 'insecticide': return 'Insecticide';
-      default: return 'Other';
-    }
-  };
-
-  const getCategoryColor = (category) => {
-    switch(category) {
-      case 'seeds': return 'seeds';
-      case 'fertilizer': return 'fertilizer';
-      case 'insecticide': return 'insecticide';
-      default: return 'other';
-    }
-  };
-
   return (
     <div className="marketplace-page">
       <div className="page-header">
-        <h2 className="page-title">Orders</h2>
+        <h2 className="page-title">My Store</h2>
         <button onClick={() => { setEditingProduct(null); setShowProductModal(true); }} className="add-product-btn">
           <Plus size={20} /> Add New Product
         </button>
@@ -222,7 +190,6 @@ const MarketplacePage = ({
 
       <PendingOrdersSection
         pendingOrders={pendingOrders}
-        products={products}
         setSelectedOrder={setSelectedOrder}
         setShowOrderModal={setShowOrderModal}
       />
@@ -236,13 +203,12 @@ const MarketplacePage = ({
 
       <ProductsSection
         products={products}
-        orders={orders}
+        loading={loading}
+        error={error}
+        categoryNameById={categoryNameById}
         setEditingProduct={setEditingProduct}
         setShowProductModal={setShowProductModal}
         handleDeleteProduct={handleDeleteProduct}
-        getCategoryColor={getCategoryColor}
-        getCategoryLabel={getCategoryLabel}
-        getStatusColor={getStatusColor}
       />
 
       {showOrderModal && selectedOrder && (
@@ -274,17 +240,7 @@ const MarketplacePage = ({
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                onClick={() => handleApproveOrder(selectedOrder.id)}
-                disabled={(() => {
-                  const product = products.find(product => product.id === selectedOrder.productId);
-                  return product && selectedOrder.quantity > product.quantity;
-                })()}
-                className={`approve-btn ${(() => {
-                  const product = products.find(product => product.id === selectedOrder.productId);
-                  return product && selectedOrder.quantity > product.quantity ? 'disabled' : '';
-                })()}`}
-              >
+              <button onClick={() => handleApproveOrder(selectedOrder.id)} className="approve-btn">
                 <Check size={18} /> Approve Order
               </button>
               <button onClick={() => { setShowOrderModal(false); setSelectedOrder(null); }} className="cancel-btn">

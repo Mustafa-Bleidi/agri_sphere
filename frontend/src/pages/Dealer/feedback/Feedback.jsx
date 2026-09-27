@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, TrendingUp, User } from "lucide-react";
-import './Feedback.css'; 
+import './feedback.css';
 import Footer from '../../../components/common/Footer/Footer'
 const StarRating = ({ rating }) => (
   <div className="Feedback_Dealer__star-rating">

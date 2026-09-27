@@ -196,19 +196,22 @@ export const partner_logoes = [
 
 export const roles = [
     {
-        name: 'trader',
-        icon: Trader,
+        name: 'farmer',
+        value: 'farmer',
+        icon: Farmer,
     },
 
     {
-        name: 'enigneer',
+        name: 'engineer',
+        value: 'engineer',
         icon: Engineer,
     },
 
     {
-        name: 'farmer',
-        icon: Farmer,
-    }
+        name: 'dealer',
+        value: 'dealer',
+        icon: Trader,
+    },
 ];
 
 export const howItWorks_home_data = [

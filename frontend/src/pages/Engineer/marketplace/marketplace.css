@@ -216,6 +216,15 @@
   border-radius: 0.5rem;
   border: 2px solid #e5e7eb;
 }
+.product-image--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  background-color: #f3f4f6;
+}
 .product-text {
   flex: 1;
 }

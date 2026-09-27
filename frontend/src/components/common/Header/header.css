@@ -216,6 +216,7 @@ input:checked + .slider:before {
 .login__popup-content,
 .register__popup-content,
 .forgetpassword__popup-content {
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -610,4 +611,110 @@ input:checked + .slider:before {
 
 .forgetpassword__popup-assistant span:hover {
     text-decoration: underline;
+}
+
+/* =============== AUTH: account menu & form feedback =============== */
+.header__account {
+    position: relative;
+}
+
+.header__account-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.header__account-name {
+    font-size: 14px;
+    font-weight: var(--weight-600);
+    color: var(--text-color);
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header__account-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 200px;
+    padding: 16px;
+    background-color: var(--white-color);
+    border: 1px solid hsla(220, 13%, 91%, 1);
+    border-radius: 12px;
+    box-shadow: 0 12px 24px hsla(220, 13%, 30%, 0.12);
+    z-index: 1100;
+}
+
+.header__account-role {
+    font-size: 12px;
+    color: var(--black-color-alt-2);
+    text-transform: capitalize;
+    margin: 0 0 4px;
+}
+
+.header__account-link {
+    font-size: 14px;
+    font-weight: var(--weight-600);
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.header__account-logout {
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: var(--weight-600);
+    color: hsl(0, 70%, 50%);
+    cursor: pointer;
+}
+
+.popup__close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--black-color-alt-2);
+}
+
+.auth__error-message {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: hsla(0, 85%, 95%, 1);
+    color: hsl(0, 70%, 40%);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.auth__success-message {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: hsla(140, 60%, 94%, 1);
+    color: hsl(140, 60%, 30%);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.register__popup-registration-method-box {
+    cursor: pointer;
+    transition: border-color .2s, background-color .2s;
+}
+
+.register__popup-registration-method-box.active {
+    border-color: var(--first-color);
+    background-color: hsla(220, 13%, 96%, 1);
 }

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal('weekly_base_rate',10,2);
             $table->decimal('monthly_base_rate',10,2);
             
-            $table->enum('transmission', ['automatice', 'manual', 'cvt', 'electric'])->default('automatice');
+            $table->enum('transmission', ['automatic', 'manual', 'cvt', 'electric'])->default('automatic');
             $table->enum('fuel_type', ['diesel', 'gasoline', 'electric', 'hybrid', 'plug-in_hybrid'])->default('diesel');
             
             $table

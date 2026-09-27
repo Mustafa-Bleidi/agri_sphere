@@ -5,12 +5,15 @@ import { farmer_about2_data, farmer_about_data, farmer_howItWorks_data, farmer_w
 import Layout from '../../../components/common/Layout';
 import SectionTitle from '../../../components/title/SectionTitle';
 import HowItWorks from '../../../components/how-it-works/HowItWorks';
-import CTAFooter from '../../../components/cta-footer/CTAFooter';
+import CTAFooter from '../../../components/cta-footer/CtaFooter';
 import Partners from '../../../components/partners/Partners';
+import { useAuthModal } from '../../../context/AuthModalContext';
 
 import './farmer.css';
 
 function Farmer() {
+    const { openLogin, openRegister } = useAuthModal();
+
     return (
         <Layout>
 
@@ -31,11 +34,11 @@ function Farmer() {
                         </p>
 
                         <div className="hero__farmer-buttons">
-                            <button type="button" className="hero__farmer-singup-btn">
-                                Sing Up
+                            <button type="button" className="hero__farmer-singup-btn" onClick={() => openRegister('farmer')}>
+                                Sign Up
                             </button>
 
-                            <button type="button" className="hero__farmer-singin-btn">
+                            <button type="button" className="hero__farmer-singin-btn" onClick={() => openLogin()}>
                                 Log In
                             </button>
                         </div>

@@ -5,14 +5,17 @@ import { engineer__coreTools_data, engineer_howItWorks_data } from '../../../Dat
 import Layout from '../../../components/common/Layout';
 import SectionTitle from '../../../components/title/SectionTitle';
 import HowItWorks from '../../../components/how-it-works/HowItWorks';
-import CTAFooter from '../../../components/cta-footer/CTAFooter';
+import CTAFooter from '../../../components/cta-footer/CtaFooter';
 import Partners from '../../../components/partners/Partners';
+import { useAuthModal } from '../../../context/AuthModalContext';
 
 import FarmerImage from '../../../assets/farmer.jpg';
 
 import './engineer.css';
 
 function Engineer() {
+    const { openLogin, openRegister } = useAuthModal();
+
     return (
         <Layout>
 
@@ -32,11 +35,11 @@ function Engineer() {
                         </p>
 
                         <div className="hero__engineer-buttons">
-                            <button type="button" className='hero__engineer-singup-btn'>
-                                Sing Up
+                            <button type="button" className='hero__engineer-singup-btn' onClick={() => openRegister('engineer')}>
+                                Sign Up
                             </button>
 
-                            <button type="button" className='hero__engineer-singin-btn'>
+                            <button type="button" className='hero__engineer-singin-btn' onClick={() => openLogin()}>
                                 Log In
                             </button>
                         </div>

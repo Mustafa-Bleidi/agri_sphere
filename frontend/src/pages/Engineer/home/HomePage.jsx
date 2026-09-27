@@ -2,17 +2,15 @@ import React from 'react';
 import { MessageSquare, Video, AlertTriangle, ShoppingCart, Star, Package } from 'lucide-react';
 import './home.css';
 import Footer from '../../../components/common/Footer/Footer';
-const HomePageStats = ({ 
-  pendingConsultations, 
-  videoCallsScheduled, 
-  activeAlerts, 
-  pestReports, 
-  purchaseRequests, 
-  averageRating, 
-  productsSold, 
-  feedback, 
-  totalRevenue, 
-  consultationsThisMonth 
+const HomePageStats = ({
+  pendingConsultations,
+  videoCallsScheduled,
+  activeAlerts,
+  pestReports,
+  purchaseRequests,
+  averageRating,
+  productsSold,
+  feedback,
 }) => (
   <>
     <div className="stats-section">
@@ -188,8 +186,6 @@ const HomePage = ({ consultations, upcomingCalls, orders, feedback, setCurrentPa
         averageRating={averageRating}
         productsSold={productsSold}
         feedback={feedback}
-        totalRevenue={totalRevenue}
-        consultationsThisMonth={consultationsThisMonth}
       />
       <div className="main-content">
         <RecentActivity recentActivity={recentActivity} />

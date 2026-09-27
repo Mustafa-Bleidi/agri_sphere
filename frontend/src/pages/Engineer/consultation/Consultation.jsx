@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Footer from '../../../components/common/Footer/Footer';
 import {Clock,Check,MessageSquare,Video,AlertTriangle,User,X,} from 'lucide-react';
-import './consultations.css';
+import './consultation.css';
 const ConsultationStats = ({ pendingRequests, scheduled, totalToday }) => (
   <div className="stats-consultation">
     <div className="stat-item-consultation">

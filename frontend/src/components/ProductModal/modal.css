@@ -12,6 +12,7 @@
   z-index: 1000;
 }
 .crop-card {
+  position: relative;
   background-color: white;
   border-radius: 0.75rem;
   padding: 1.2rem 1.5rem 1.5rem 1.5rem;
@@ -19,6 +20,16 @@
   max-height: 85%;
   overflow-y: auto;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
 }
 .crop-title {
   font-size: 1.25rem;

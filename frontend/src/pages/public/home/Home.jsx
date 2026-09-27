@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import Layout from '../../../components/common/Layout';
 import SectionSubTitle from '../../../components/subtitle/SectionSubTitle';
 import SectionTitle from '../../../components/title/SectionTitle';
-import CTAFooter from '../../../components/cta-footer/CTAFooter';
+import CTAFooter from '../../../components/cta-footer/CtaFooter';
 import Partners from '../../../components/partners/Partners';
 
 import { howItWorks_home_data, benefits_data, cropSoluation_data, fqa_questions } from '../../../Data';
@@ -22,10 +22,13 @@ import WheatImage from '../../../assets/wheat-image.png';
 import Text from '../../../assets/text.png';
 import Location from '../../../assets/location.png';
 import Plus from '../../../assets/plus.svg'
+import { useAuthModal } from '../../../context/AuthModalContext';
 
 import './home.css';
 
 function Home() {
+    const { openRegister } = useAuthModal();
+
     return (
         <Layout>
             {/* =============== HOME =============== */}
@@ -146,7 +149,7 @@ function Home() {
                         </div>
 
                         <div className="services__links">
-                            <button type='button' className='services__link service__link-singup'>
+                            <button type='button' className='services__link service__link-singup' onClick={() => openRegister('farmer')}>
                                 Sign Up as Farmer
                             </button>
 
@@ -210,7 +213,7 @@ function Home() {
                         </div>
 
                         <div className="services__links">
-                            <button type='button' className='services__link service__link-singup'>
+                            <button type='button' className='services__link service__link-singup' onClick={() => openRegister('engineer')}>
                                 Sign Up as Engineer
                             </button>
 
@@ -254,7 +257,7 @@ function Home() {
                         </div>
 
                         <div className="services__links">
-                            <button type='button' className='services__link service__link-singup'>
+                            <button type='button' className='services__link service__link-singup' onClick={() => openRegister('dealer')}>
                                 Sign Up as Equipment Dealer
                             </button>
 
