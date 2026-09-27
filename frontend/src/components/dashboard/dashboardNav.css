@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     padding-bottom: 12px;
 }
 
@@ -19,10 +20,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 1;
+    min-width: 0;
     text-decoration: none;
     color: var(--title-color);
     font-weight: 600;
     font-size: 16px;
+}
+
+.dashboard-nav__brand span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .dashboard-nav__logo {
@@ -35,18 +44,22 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-shrink: 0;
 }
 
 .dashboard-nav__user-name {
     font-weight: 600;
     color: var(--text-color-alt-2);
     text-transform: capitalize;
+    white-space: nowrap;
 }
 
 .dashboard-nav__logout {
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
     background: none;
     border: 1px solid var(--border-color-alt-3);
     border-radius: 8px;
@@ -67,6 +80,7 @@
     display: flex;
     gap: 8px;
     overflow-x: auto;
+    scrollbar-width: thin;
 }
 
 .dashboard-nav__link {
@@ -133,13 +147,16 @@
 }
 
 .dashboard-switch input:checked + .dashboard-slider {
-    background-color: #303136;
+    background-color: #1e2029;
 }
 
 .dashboard-switch input:checked + .dashboard-slider:before {
     left: calc(100% - 1.45em);
-    background: #303136;
-    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+    /* Light circle with an inset shadow of the track's own dark color, offset
+       to one side, so it reads as a crescent moon instead of blending into
+       the (same-color) track behind it. */
+    background: #d7dae2;
+    box-shadow: inset -5px -2px 0 0 #1e2029;
 }
 
 .dashboard-nav__link.active {
@@ -216,4 +233,32 @@
 @keyframes dashboard-content-in {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 640px) {
+    .dashboard-nav {
+        padding: 12px 16px 0;
+    }
+
+    .dashboard-nav__user {
+        gap: 10px;
+    }
+
+    .dashboard-nav__user-name {
+        display: none;
+    }
+
+    .dashboard-nav__logout-text {
+        display: none;
+    }
+
+    .dashboard-nav__logout {
+        padding: 8px;
+    }
+
+    .dashboard-nav__links {
+        mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    }
 }

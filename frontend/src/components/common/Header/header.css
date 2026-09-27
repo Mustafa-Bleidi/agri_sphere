@@ -99,11 +99,20 @@
 
 .header__user-actions {
     gap: 24px;
-    width: 128px;
     height: 46px;
+    flex-shrink: 0;
 }
 
 .header__user-profile {
+    width: 38px;
+    height: 38px;
+    padding: 9px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    background-color: var(--surface-color);
+    border: 1px solid var(--first-color);
+    border-radius: 50%;
+    object-fit: contain;
     cursor: pointer;
 }
 
@@ -153,14 +162,16 @@
 }
 
 input:checked + .slider {
-    background-color: #303136;
+    background-color: #1e2029;
 }
 
 input:checked + .slider:before {
     left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
-    background: #303136;
-    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
-    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+    /* Light circle with an inset shadow of the track's own dark color, offset
+       to one side, so it reads as a crescent moon instead of blending into
+       the (same-color) track behind it. */
+    background: #d7dae2;
+    box-shadow: inset -6px -2px 0 0 #1e2029;
 }
 
 /* =============== POPUPS =============== */
@@ -885,8 +896,11 @@ input:checked + .slider:before {
         gap: 10px;
     }
 
-    .theme__toggle {
-        display: none;
+    .theme__toggle .switch {
+        --width-of-switch: 2.9em;
+        --height-of-switch: 1.7em;
+        --size-of-icon: 1.1em;
+        --slider-offset: 0.3em;
     }
 
     .header__account-name {

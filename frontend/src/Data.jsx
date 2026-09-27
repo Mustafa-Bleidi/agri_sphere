@@ -85,7 +85,7 @@ export const public_links = [
     },
 
     {
-        name: 'dealrs',
+        name: 'dealers',
         path: '/equipment',
     },
 

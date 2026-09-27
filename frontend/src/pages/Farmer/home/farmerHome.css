@@ -25,6 +25,13 @@
     border: 1px solid var(--border-color-alt);
     border-radius: 12px;
     padding: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.fh-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .fh-stat-icon {
@@ -60,15 +67,18 @@
     background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt);
     border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     color: var(--text-color-alt-2);
     text-decoration: none;
     font-weight: 600;
-    transition: 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .fh-action-card:hover {
     border-color: var(--first-color);
     color: var(--title-color);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .fh-section-title {

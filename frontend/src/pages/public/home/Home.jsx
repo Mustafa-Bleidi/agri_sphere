@@ -371,7 +371,7 @@ function Home() {
             <section className="cropSoluations">
                 <SectionTitle 
                     title='Smart farming for every crop'
-                    subtitle='crop soluations'
+                    subtitle='crop solutions'
                     description={
                         'Tailored agricultural intelligence for your specific crops. Monitor, analyze, and optimize every aspect of your farming operations.'
                     }
@@ -432,7 +432,7 @@ function Home() {
                                         </div>
 
                                         <button type="button" className='cropSoluations__card-btn'>
-                                            Explore Soluation
+                                            Explore Solution
                                         </button>
                                     </div>
                                 </div>
