@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\LocationNotFoundException;
 use App\Models\Alert;
+use App\Services\InventoryAlertService;
 use App\Services\ResponseService;
 use App\Services\SmartAlertService;
 use Illuminate\Http\Request;
@@ -45,6 +46,22 @@ class SmartAlertController extends Controller
             ], 422);
         } catch (Throwable $e) {
             Log::error('Smart alert generation failed: '.$e->getMessage());
+
+            return response()->json([
+                'status' => 500,
+                'message' => 'Could not generate alerts right now. Please try again later.',
+            ], 500);
+        }
+
+        return ResponseService::allItemsResponse($alerts);
+    }
+
+    public function generateInventoryAlerts(Request $request)
+    {
+        try {
+            $alerts = InventoryAlertService::generateForUser($request->user());
+        } catch (Throwable $e) {
+            Log::error('Inventory alert generation failed: '.$e->getMessage());
 
             return response()->json([
                 'status' => 500,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
-import { Home as HomeIcon, MessageSquare, ShoppingCart, Video, Star } from 'lucide-react';
+import { Home as HomeIcon, MessageSquare, ShoppingCart, Video, Star, Bell } from 'lucide-react';
 
 import DashboardNav from '../../components/dashboard/DashboardNav';
 import DashboardFooter from '../../components/dashboard/DashboardFooter';
@@ -15,12 +15,14 @@ import ConsultationsPage from './consultation/Consultation';
 import MarketplacePage from './marketplace/MarketplacePage';
 import VideoCallPage from './video call/VideoCallPage';
 import FeedbackPage from './feedback/FeedbackPage';
+import EngineerAlerts from './alerts/EngineerAlerts';
 
 const NAV_LINKS = [
     { to: '/engineer/home', label: 'Home', icon: <HomeIcon size={18} />, end: true },
     { to: '/engineer/consultations', label: 'Consultations', icon: <MessageSquare size={18} /> },
     { to: '/engineer/marketplace', label: 'Marketplace', icon: <ShoppingCart size={18} /> },
     { to: '/engineer/video-call', label: 'Video Call', icon: <Video size={18} /> },
+    { to: '/engineer/alerts', label: 'Smart Alerts', icon: <Bell size={18} /> },
     { to: '/engineer/feedback', label: 'Feedback', icon: <Star size={18} /> },
 ];
 
@@ -235,6 +237,7 @@ function EngineerDashboard() {
                         }
                     />
                     <Route path="feedback" element={<FeedbackPage feedback={feedback} />} />
+                    <Route path="alerts" element={<EngineerAlerts />} />
                     <Route path="*" element={<HomePage
                         consultations={consultations}
                         upcomingCalls={upcomingCalls}
