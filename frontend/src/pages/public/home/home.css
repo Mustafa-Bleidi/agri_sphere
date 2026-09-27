@@ -220,7 +220,7 @@
     gap: 32px;
     margin-top: 124px;
     margin-inline: 68px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
 }
 
 /* =============== SERVICES =============== */
@@ -273,7 +273,7 @@
 
 .services__title-txt {
     max-width: 533px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 36px;
     font-weight: var(--weight-600);
     line-height: 36px;
@@ -365,7 +365,7 @@
 }
 
 .service__link-discover-txt {
-    color: var(--first-color);
+    color: var(--title-color);
     line-height: 148%;
     vertical-align: middle;
 }
@@ -411,7 +411,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border-radius: 20px;
     box-shadow: 0px 6px 10px 1px hsla(0, 0%, 0%, 0.25);
     padding-block: 36px 6.75px;
@@ -448,7 +448,7 @@
 
 .howItWorks__home__card-title {
     max-width: 163px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 20px;
     font-weight: var(--weight-600);
     line-height: 28px;
@@ -499,7 +499,7 @@
     align-items: center;
     gap: 20px;
     padding: 30px 34px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 2px solid var(--body-color);
     border-radius: 20px;
     box-shadow: 0px 4px 6px 0px hsla(0, 0%, 0%, 0.1);
@@ -601,7 +601,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt);
     border-radius: 24px;
     box-shadow: 0px 1px 3px 0px hsla(0, 0%, 0%, 0.1);
@@ -702,7 +702,7 @@
 }
 
 .cropSoluations__card-data div h6 {
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 14px;
     font-weight: var(--weight-600);
     line-height: 20px;
@@ -814,7 +814,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 26px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 2px solid var(--body-color);
     border-radius: 15px;
     box-shadow: 0px 2px 4px 0px hsla(0, 0%, 0%, 0.1);
@@ -873,7 +873,7 @@
 
 .fqa__more-questions a {
     display: block;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 20px;
     font-weight: var(--weight-600);
     transition: 0.340s ease-out;

@@ -11,7 +11,7 @@
 }
 
 .partner__title {
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 32px;
     font-weight: var(--weight-600);
     line-height: 100%;

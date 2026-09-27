@@ -1,7 +1,7 @@
 .section__subtitle {
     position: relative;
     width: fit-content;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 38px;
     font-weight: var(--weight-600);
     line-height: 45px;

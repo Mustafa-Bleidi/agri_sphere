@@ -78,7 +78,7 @@
     align-items: center;
     gap: 6px;
     margin-bottom: 16px;
-    color: var(--first-color);
+    color: var(--title-color);
     text-decoration: none;
     font-weight: 500;
 }

@@ -28,7 +28,7 @@
 }
 
 .fh-stat-icon {
-    color: var(--first-color);
+    color: var(--title-color);
     width: 28px;
     height: 28px;
 }
@@ -68,7 +68,7 @@
 
 .fh-action-card:hover {
     border-color: var(--first-color);
-    color: var(--first-color);
+    color: var(--title-color);
 }
 
 .fh-section-title {
@@ -97,6 +97,6 @@
 
 .fh-recent-status {
     text-transform: capitalize;
-    color: var(--first-color);
+    color: var(--title-color);
     font-weight: 600;
 }

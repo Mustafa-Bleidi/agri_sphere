@@ -18,7 +18,7 @@
 .hero__engineer-title {
     position: relative;
     max-width: 370px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 56px;
     font-weight: var(--weight-700);
     line-height: 60px;
@@ -123,7 +123,7 @@
 
 .hero__engineer-image-wrapper::before {
     height: 484.1px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     transition: .45s ease-in-out;
     z-index: 1;
 }
@@ -178,7 +178,7 @@
 
 .coreTools__engineer-card {
     padding: 24px 28px 68px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border-left: 4px solid hsla(142, 69%, 58%, 1);
     border-radius: 16px;
     box-shadow: 0px 4px 6px 0px hsla(0, 0%, 0%, 0.05);
