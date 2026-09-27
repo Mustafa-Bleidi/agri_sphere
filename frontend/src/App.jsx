@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 
 import { AuthProvider } from './context/AuthContext';
 import { AuthModalProvider } from './context/AuthModalContext';
+import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
 // public
@@ -21,51 +22,53 @@ import DealerDashboard from './pages/Dealer/DealerDashboard';
 
 function App() {
   return (
-    <AuthProvider>
-      <AuthModalProvider>
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <Routes>
-            {/* Public marketing pages */}
-            <Route path='/' element={<Home />} />
-            <Route path='/fqa' element={<FQA />} />
-            <Route path='/farmer' element={<Farmer />} />
-            <Route path='/engineer' element={<Engineer />} />
-            <Route path='/equipment' element={<Equipment />} />
-            <Route path='/contact' element={<Contact />} />
+    <ThemeProvider>
+      <AuthProvider>
+        <AuthModalProvider>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
+            <Routes>
+              {/* Public marketing pages */}
+              <Route path='/' element={<Home />} />
+              <Route path='/fqa' element={<FQA />} />
+              <Route path='/farmer' element={<Farmer />} />
+              <Route path='/engineer' element={<Engineer />} />
+              <Route path='/equipment' element={<Equipment />} />
+              <Route path='/contact' element={<Contact />} />
 
-            {/* Farmer dashboard (protected) */}
-            <Route
-              path='/farmer/*'
-              element={
-                <ProtectedRoute role='farmer'>
-                  <FarmerDashboard />
-                </ProtectedRoute>
-              }
-            />
+              {/* Farmer dashboard (protected) */}
+              <Route
+                path='/farmer/*'
+                element={
+                  <ProtectedRoute role='farmer'>
+                    <FarmerDashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Engineer dashboard (protected) */}
-            <Route
-              path='/engineer/*'
-              element={
-                <ProtectedRoute role='engineer'>
-                  <EngineerDashboard />
-                </ProtectedRoute>
-              }
-            />
+              {/* Engineer dashboard (protected) */}
+              <Route
+                path='/engineer/*'
+                element={
+                  <ProtectedRoute role='engineer'>
+                    <EngineerDashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Dealer dashboard (protected) */}
-            <Route
-              path='/dealer/*'
-              element={
-                <ProtectedRoute role='dealer'>
-                  <DealerDashboard />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </AuthModalProvider>
-    </AuthProvider>
+              {/* Dealer dashboard (protected) */}
+              <Route
+                path='/dealer/*'
+                element={
+                  <ProtectedRoute role='dealer'>
+                    <DealerDashboard />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </AuthModalProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 

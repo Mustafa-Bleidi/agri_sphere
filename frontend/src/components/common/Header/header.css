@@ -28,7 +28,7 @@
 .nav__list,
 .nav__logo {
     height: 45px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--first-color);
     border-radius: 25px;
 }
@@ -176,17 +176,20 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     padding: 0 1rem;
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: var(--overlay-color);
     opacity: 0;
     visibility: hidden;
     z-index: 1500;
-    transition: 0.3s;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color .35s ease;
 }
 
 .login__popup-inner,
 .register__popup-inner,
 .forgetpassword__popup-inner {
     border-radius: 10px;
+    transform: translateY(18px) scale(.96);
+    opacity: 0;
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), opacity .3s ease;
 }
 
 .login__popup-inner,
@@ -199,6 +202,13 @@ input:checked + .slider:before {
 .forgetpassword__popup.open {
     opacity: 1;
     visibility: visible;
+}
+
+.login__popup.open .login__popup-inner,
+.register__popup.open .register__popup-inner,
+.forgetpassword__popup.open .forgetpassword__popup-inner {
+    transform: translateY(0) scale(1);
+    opacity: 1;
 }
 
 .forgetpassword__popup-btn,
@@ -227,7 +237,7 @@ input:checked + .slider:before {
     width: 350px;
     height: 500px;
     padding: 30px 30px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
 }
 
 .login__popup-title {
@@ -236,7 +246,7 @@ input:checked + .slider:before {
     font-size: 28px;
     font-weight: var(--weight-600);
     line-height: 100%;
-    color: var(--black-color);
+    color: var(--text-color-alt);
     text-align: center;
     margin-bottom: 30px;
 }
@@ -325,7 +335,7 @@ input:checked + .slider:before {
     display: inline-block;
     width: 149px;
     height: 11px;
-    color: hsla(0, 0%, 45%, 1);
+    color: var(--text-color-alt-3);
     font-size: 14px;
     font-weight: var(--weight-400);
     line-height: 100%;
@@ -387,10 +397,10 @@ input:checked + .slider:before {
 }
 
 .google-btn {
-    color: var(--black-color);
+    color: var(--text-color-alt);
     font-size: 12px;
     font-weight: var(--weight-400);
-    border: 2px solid hsla(0, 0%, 45%, 1);
+    border: 2px solid var(--border-color-alt-3);
     box-shadow: 0px 10px 36px 0px hsla(0, 0%, 0%, 0.16);
 }
 
@@ -411,7 +421,7 @@ input:checked + .slider:before {
     width: 435px;
     height: 776px;
     padding: 30px 25px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
 }
 
 .register__popup-title {
@@ -420,7 +430,7 @@ input:checked + .slider:before {
     font-size: 28px;
     font-weight: var(--weight-600);
     line-height: 100%;
-    color: var(--black-color);
+    color: var(--text-color-alt);
     text-align: center;
     margin-bottom: 32px;
 }
@@ -461,7 +471,7 @@ input:checked + .slider:before {
 }
 
 .register__popup-registration-method-role {
-    color: hsla(217, 19%, 27%, 1);
+    color: var(--text-color-alt-2);
     font-size: 16px;
     font-weight: var(--weight-600);
     line-height: 24px;
@@ -511,7 +521,7 @@ input:checked + .slider:before {
 .register__popup-assistant {
     width: 207.03px;
     height: 13px;
-    color: hsla(0, 0%, 45%, 1);
+    color: var(--text-color-alt-3);
     font-size: 14px;
     font-weight: var(--weight-400);
 }
@@ -534,7 +544,7 @@ input:checked + .slider:before {
     width: 400px;
     height: 269px;
     padding: 32px 24px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border-radius: 10px;
     box-shadow: 0px 2px 3px 0px hsla(0, 0%, 0%, 0.17);
 }
@@ -647,7 +657,7 @@ input:checked + .slider:before {
     gap: 8px;
     width: 200px;
     padding: 16px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid hsla(220, 13%, 91%, 1);
     border-radius: 12px;
     box-shadow: 0 12px 24px hsla(220, 13%, 30%, 0.12);
@@ -683,12 +693,78 @@ input:checked + .slider:before {
     position: absolute;
     top: 16px;
     right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     background: none;
     border: none;
+    border-radius: 50%;
     font-size: 26px;
     line-height: 1;
     cursor: pointer;
     color: var(--black-color-alt-2);
+    transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), background-color .2s ease, color .2s ease;
+}
+
+.popup__close-btn:hover {
+    transform: rotate(90deg);
+    background-color: var(--border-color);
+    color: var(--first-color);
+}
+
+/* Interactive polish: inputs, buttons, socials and role cards inside the
+   auth popups all get a consistent focus/hover language. */
+.login__popup-input,
+.register__popup-input,
+.forgetpassword__popup-input {
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .35s ease, color .35s ease;
+}
+
+.login__popup-input:focus,
+.register__popup-input:focus,
+.forgetpassword__popup-input:focus {
+    border-color: var(--first-color);
+    box-shadow: 0 0 0 3px var(--border-color-alt-2);
+}
+
+.login__popup-btn,
+.register__popup-btn,
+.forgetpassword__popup-btn {
+    transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .2s ease, filter .2s ease;
+}
+
+.login__popup-btn:hover,
+.register__popup-btn:hover,
+.forgetpassword__popup-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 6px 14px 0px hsla(0, 0%, 0%, 0.2);
+    filter: brightness(1.05);
+}
+
+.login__popup-btn:active,
+.register__popup-btn:active,
+.forgetpassword__popup-btn:active {
+    transform: translateY(0);
+    filter: brightness(0.97);
+}
+
+.login__popup-social {
+    transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .2s ease, background-color .35s ease;
+}
+
+.login__popup-social:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 6px 14px 0px hsla(0, 0%, 0%, 0.12);
+}
+
+.register__popup-registration-method-box {
+    transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1), border-color .2s ease, background-color .2s ease;
+}
+
+.register__popup-registration-method-box:hover {
+    transform: translateY(-2px);
 }
 
 .auth__error-message {
@@ -716,7 +792,7 @@ input:checked + .slider:before {
 
 .register__popup-registration-method-box.active {
     border-color: var(--first-color);
-    background-color: hsla(220, 13%, 96%, 1);
+    background-color: var(--surface-color-alt);
 }
 
 /* =============== NAV TOGGLE (MOBILE) =============== */
@@ -728,7 +804,7 @@ input:checked + .slider:before {
     height: 38px;
     flex-shrink: 0;
     color: var(--first-color);
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--first-color);
     border-radius: 50%;
 }
@@ -772,7 +848,7 @@ input:checked + .slider:before {
         height: auto;
         gap: 4px;
         padding: 14px;
-        background-color: var(--white-color);
+        background-color: var(--surface-color);
         border-radius: 20px;
         box-shadow: 0px 10px 25px 0px hsla(0, 0%, 0%, 0.15);
     }

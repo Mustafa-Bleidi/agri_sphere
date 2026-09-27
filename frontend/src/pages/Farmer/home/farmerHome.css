@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt);
     border-radius: 12px;
     padding: 18px;
@@ -57,7 +57,7 @@
     align-items: center;
     gap: 10px;
     padding: 24px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt);
     border-radius: 12px;
     color: var(--text-color-alt-2);
@@ -88,7 +88,7 @@
     display: flex;
     justify-content: space-between;
     padding: 12px 16px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt);
     border-radius: 8px;
     text-decoration: none;

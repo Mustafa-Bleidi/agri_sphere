@@ -3,9 +3,12 @@ import { Link, NavLink } from 'react-router';
 import { LogOut, ShoppingCart } from 'lucide-react';
 
 import Logo from '../../assets/Logo.png';
+import { useTheme } from '../../context/ThemeContext';
 import './dashboardNav.css';
 
 function DashboardNav({ title, links, userName, onLogout, cartCount, onCartClick }) {
+    const { theme, toggleTheme } = useTheme();
+
     return (
         <header className="dashboard-nav">
             <div className="dashboard-nav__top">
@@ -15,6 +18,18 @@ function DashboardNav({ title, links, userName, onLogout, cartCount, onCartClick
                 </Link>
 
                 <div className="dashboard-nav__user">
+                    <div className="dashboard-nav__theme-toggle">
+                        <label htmlFor="dashboard-theme-switch" className="dashboard-switch">
+                            <input
+                                type="checkbox"
+                                id="dashboard-theme-switch"
+                                checked={theme === 'dark'}
+                                onChange={toggleTheme}
+                                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                            />
+                            <span className="dashboard-slider"></span>
+                        </label>
+                    </div>
                     {onCartClick && (
                         <button type="button" className="dashboard-nav__cart" onClick={onCartClick}>
                             <ShoppingCart size={18} />

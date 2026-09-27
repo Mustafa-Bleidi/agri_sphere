@@ -114,7 +114,7 @@
 }
 .category-button.active {
   background-color: var(--color-green-500);
-  color: var(--color-white);
+  color: hsla(0, 0%, 100%, 1);
 }
 .category-button:not(.active) {
   background-color: var(--color-gray-100);
@@ -225,4 +225,15 @@
   --color-red-error: #fd0808;
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="dark"] {
+  --color-white: hsla(222, 20%, 15%, 1);
+  --color-gray-50: hsla(222, 20%, 11%, 1);
+  --color-gray-100: hsla(222, 20%, 13%, 1);
+  --color-gray-200: hsla(220, 15%, 22%, 1);
+  --color-gray-300: hsla(220, 14%, 26%, 1);
+  --color-gray-400: hsla(210, 10%, 56%, 1);
+  --color-gray-500: hsla(210, 12%, 68%, 1);
+  --color-gray-800: hsla(210, 25%, 92%, 1);
 }

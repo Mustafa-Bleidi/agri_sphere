@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { public_links, roles } from '../../../Data';
 import { useAuth } from '../../../context/AuthContext';
 import { useAuthModal } from '../../../context/AuthModalContext';
+import { useTheme } from '../../../context/ThemeContext';
 
 import Logo from '../../../assets/Logo.png';
 import Facebook from '../../../assets/facebook-btn.svg';
@@ -44,6 +45,7 @@ function Header() {
     const navigate = useNavigate();
     const { user, role, isAuthenticated, login, register, logout } = useAuth();
     const { mode, defaultRole, openLogin, openRegister, close } = useAuthModal();
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         if (mode === 'register') setRegisterRole(defaultRole);
@@ -174,8 +176,15 @@ function Header() {
                         </button>
 
                         <div className="theme__toggle" id="theme-toggle">
-                            <label htmlFor="" className="switch">
-                                <input type="checkbox" name="" id="" />
+                            <label htmlFor="theme-switch" className="switch">
+                                <input
+                                    type="checkbox"
+                                    name="theme"
+                                    id="theme-switch"
+                                    checked={theme === 'dark'}
+                                    onChange={toggleTheme}
+                                    aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                />
                                 <span className="slider"></span>
                             </label>
                         </div>
