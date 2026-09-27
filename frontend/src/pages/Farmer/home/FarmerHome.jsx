@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { ShoppingCart, ClipboardList, User as UserIcon, Package } from 'lucide-react';
+import { ShoppingCart, ClipboardList, User as UserIcon, Package, Stethoscope } from 'lucide-react';
 import './farmerHome.css';
 
 const statusOf = (order) => order.order_type === 'rental_order' ? order.rental_status : order.order_status;
@@ -40,6 +40,10 @@ const FarmerHome = ({ userName, orders, ordersLoading, cartCount }) => {
                 <Link to="/farmer/marketplace" className="fh-action-card">
                     <ShoppingCart size={22} />
                     <span>Browse Marketplace</span>
+                </Link>
+                <Link to="/farmer/diagnosis" className="fh-action-card">
+                    <Stethoscope size={22} />
+                    <span>Plant Doctor</span>
                 </Link>
                 <Link to="/farmer/orders" className="fh-action-card">
                     <ClipboardList size={22} />
