@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\Alert;
 use App\Models\User;
-use Illuminate\Http\Client\RequestException;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-use Throwable;
 
 class SmartAlertService
 {
@@ -114,19 +110,13 @@ class SmartAlertService
     private static function phraseMessage(array $fact): string
     {
         $template = self::templateMessage($fact);
-        $apiKey = config('services.gemini.api_key');
 
-        if (empty($apiKey)) {
-            return $template;
-        }
+        $prompt = "You are an agricultural assistant writing a short SMS-style alert for a farmer. "
+            ."Given these facts as JSON, write ONE short, friendly, actionable sentence (max 220 characters). "
+            ."Respond with only the sentence, no quotes and no markdown.\n"
+            .json_encode($fact);
 
-        try {
-            return self::geminiPhrase($fact, $template, $apiKey);
-        } catch (Throwable $e) {
-            Log::warning('Smart alert AI phrasing failed, falling back to template: '.$e->getMessage());
-
-            return $template;
-        }
+        return GeminiTextService::phraseSentence($prompt, $template);
     }
 
     private static function templateMessage(array $fact): string
@@ -146,33 +136,5 @@ class SmartAlertService
             $fact['rain_chance'],
             round((float) $fact['temperature'])
         );
-    }
-
-    private static function geminiPhrase(array $fact, string $fallback, string $apiKey): string
-    {
-        $model = config('services.gemini.model');
-
-        $prompt = "You are an agricultural assistant writing a short SMS-style alert for a farmer. "
-            ."Given these facts as JSON, write ONE short, friendly, actionable sentence (max 220 characters). "
-            ."Respond with only the sentence, no quotes and no markdown.\n"
-            .json_encode($fact);
-
-        $response = Http::withHeaders(['x-goog-api-key' => $apiKey])
-            ->timeout(15)
-            ->retry(2, 800, function ($exception) {
-                return $exception instanceof RequestException
-                    && $exception->response->status() === 503;
-            }, throw: false)
-            ->post("https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent", [
-                'contents' => [['parts' => [['text' => $prompt]]]],
-            ]);
-
-        if ($response->failed()) {
-            return $fallback;
-        }
-
-        $text = trim((string) data_get($response->json(), 'candidates.0.content.parts.0.text'));
-
-        return $text !== '' ? $text : $fallback;
     }
 }

@@ -205,11 +205,24 @@ class SmartAlertTest extends TestCase
             ->assertJsonPath('data.unread_count', 0);
     }
 
-    public function test_a_dealer_cannot_access_farmer_smart_alert_routes(): void
+    public function test_viewing_and_managing_alerts_is_shared_across_roles(): void
+    {
+        // Listing/marking alerts as read is role-agnostic (only how alerts get
+        // generated differs per role), so any of the three roles can use it.
+        $dealer = $this->makeUserWithRole('dealer');
+        Sanctum::actingAs($dealer, ['*']);
+
+        $this->getJson('/api/get-smart-alerts')
+            ->assertStatus(200)
+            ->assertJsonPath('data.unread_count', 0);
+    }
+
+    public function test_a_dealer_cannot_generate_farmer_or_engineer_specific_alerts(): void
     {
         $dealer = $this->makeUserWithRole('dealer');
         Sanctum::actingAs($dealer, ['*']);
 
-        $this->getJson('/api/get-smart-alerts')->assertStatus(401);
+        $this->postJson('/api/generate-smart-alerts', ['city' => 'Damascus'])->assertStatus(401);
+        $this->postJson('/api/generate-inventory-alerts')->assertStatus(401);
     }
 }

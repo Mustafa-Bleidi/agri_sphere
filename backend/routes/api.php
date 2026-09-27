@@ -116,10 +116,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::get('get-orders', [AccountController::class, 'getOrders']);
 
         // Smart Alerts (AI-assisted weather/irrigation alerts)
-        Route::get('get-smart-alerts', [SmartAlertController::class, 'index']);
         Route::post('generate-smart-alerts', [SmartAlertController::class, 'generate']);
-        Route::post('mark-alert-read/{id}', [SmartAlertController::class, 'markRead']);
-        Route::post('mark-all-alerts-read', [SmartAlertController::class, 'markAllRead']);
     });
 
     // ========== Engineer Routes (Engineer APIs) ==========
@@ -130,6 +127,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::post('save-engineer-product', [EngineerProductController::class, 'saveEngineerProduct']);
         Route::put('update-engineer-product/{id}', [EngineerProductController::class, 'updateEngineerProduct']);
         Route::delete('delete-engineer-product/{id}', [EngineerProductController::class, 'deleteEngineerProduct']);
+
+        // Smart Alerts (AI-assisted inventory alerts)
+        Route::post('generate-inventory-alerts', [SmartAlertController::class, 'generateInventoryAlerts']);
     });
 
     // ========== Dealer Routes (Dealer APIs) ==========
@@ -160,5 +160,11 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
         // AI Routes (Plant disease/pest diagnosis via Gemini)
         Route::post('diagnose-plant-image', [PlantDiagnosisController::class, 'diagnose']);
+
+        // Smart Alerts (shared: viewing/managing alerts is role-agnostic,
+        // only how they're generated differs per role)
+        Route::get('get-smart-alerts', [SmartAlertController::class, 'index']);
+        Route::post('mark-alert-read/{id}', [SmartAlertController::class, 'markRead']);
+        Route::post('mark-all-alerts-read', [SmartAlertController::class, 'markAllRead']);
     });
 });

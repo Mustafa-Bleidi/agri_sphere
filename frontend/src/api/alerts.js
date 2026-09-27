@@ -12,6 +12,10 @@ export function generateSmartAlerts(city) {
         .then((res) => res.data?.data ?? []);
 }
 
+export function generateInventoryAlerts() {
+    return apiClient.post('/generate-inventory-alerts').then((res) => res.data?.data ?? []);
+}
+
 export function markAlertRead(id) {
     return apiClient.post(`/mark-alert-read/${id}`).then((res) => res.data?.data);
 }
