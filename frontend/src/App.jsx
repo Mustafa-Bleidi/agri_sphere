@@ -15,6 +15,7 @@ import Equipment from './pages/public/equipment/Equipment';
 import Contact from './pages/public/contact/Contact';
 
 // dashboards
+import FarmerDashboard from './pages/Farmer/FarmerDashboard';
 import EngineerDashboard from './pages/Engineer/EngineerDashboard';
 import DealerDashboard from './pages/Dealer/DealerDashboard';
 
@@ -31,6 +32,16 @@ function App() {
             <Route path='/engineer' element={<Engineer />} />
             <Route path='/equipment' element={<Equipment />} />
             <Route path='/contact' element={<Contact />} />
+
+            {/* Farmer dashboard (protected) */}
+            <Route
+              path='/farmer/*'
+              element={
+                <ProtectedRoute role='farmer'>
+                  <FarmerDashboard />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Engineer dashboard (protected) */}
             <Route

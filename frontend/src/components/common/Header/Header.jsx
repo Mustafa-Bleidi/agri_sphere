@@ -14,6 +14,7 @@ import UserProfile from '../../../assets/user-bold 1.png';
 import './header.css';
 
 const DASHBOARD_PATH_BY_ROLE = {
+    farmer: '/farmer/home',
     engineer: '/engineer/home',
     dealer: '/dealer/home',
 };

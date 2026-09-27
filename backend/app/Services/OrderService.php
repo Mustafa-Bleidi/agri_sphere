@@ -88,21 +88,26 @@ class OrderService
 
     // This method will return all of the orders
     public static function showAllUserOrders(string $user_id) {
-        $orders = DB::table('users as U')
-            ->join('addresses as A', 'U.user_id', '=', 'A.user_id')
-            ->join('orders as O', 'U.user_id', '=', 'O.user_id')
+        $orders = DB::table('orders as O')
             ->join('payments as P', 'O.order_id', '=', 'P.order_id')
+            ->leftJoin('purchased_orders as PO', 'O.order_id', '=', 'PO.purchased_order_id')
+            ->leftJoin('rental_orders as RO', 'O.order_id', '=', 'RO.rental_order_id')
             ->select(
-                'U.username', 
-                'U.email', 
-                'U.first_name', 
-                'U.last_name', 
-                'U.phone_number', 
-                'A.*', 
-                'O.*', 
-                'P.*'
+                'O.*',
+                'P.payment_method',
+                'P.payment_status',
+                'P.amount',
+                'P.transaction_id',
+                'P.paid_at',
+                'PO.order_status',
+                'PO.grand_total',
+                'RO.rental_status',
+                'RO.pickup_status',
+                'RO.dropoff_status',
+                'RO.total_amount as rental_total_amount'
             )
-            ->where('U.user_id', $user_id)
+            ->where('O.user_id', $user_id)
+            ->orderBy('O.created_at', 'desc')
             ->get();
 
         return $orders;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
-import { LogOut } from 'lucide-react';
+import { LogOut, ShoppingCart } from 'lucide-react';
 
 import Logo from '../../assets/Logo.png';
 import './dashboardNav.css';
 
-function DashboardNav({ title, links, userName, onLogout }) {
+function DashboardNav({ title, links, userName, onLogout, cartCount, onCartClick }) {
     return (
         <header className="dashboard-nav">
             <div className="dashboard-nav__top">
@@ -15,6 +15,12 @@ function DashboardNav({ title, links, userName, onLogout }) {
                 </Link>
 
                 <div className="dashboard-nav__user">
+                    {onCartClick && (
+                        <button type="button" className="dashboard-nav__cart" onClick={onCartClick}>
+                            <ShoppingCart size={18} />
+                            {cartCount > 0 && <span className="dashboard-nav__cart-badge">{cartCount}</span>}
+                        </button>
+                    )}
                     <span className="dashboard-nav__user-name">{userName}</span>
                     <button type="button" className="dashboard-nav__logout" onClick={onLogout}>
                         <LogOut size={16} /> Log out

@@ -1,0 +1,135 @@
+.fo-page {
+    padding-bottom: 24px;
+}
+
+.fo-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 16px;
+}
+
+.fo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color-alt);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.fo-item-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fo-item-type {
+    font-weight: 600;
+    color: var(--text-color-alt-2);
+}
+
+.fo-item-id {
+    font-size: 13px;
+    color: var(--text-color-alt-3);
+}
+
+.fo-item-details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.fo-status {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: var(--body-color-alt-2);
+    color: var(--text-color-alt-2);
+}
+
+.fo-status-delivered, .fo-status-completed, .fo-status-active, .fo-status-confirmed {
+    background-color: hsla(140, 60%, 90%, 1);
+    color: hsl(140, 60%, 28%);
+}
+
+.fo-status-cancelled {
+    background-color: hsla(0, 70%, 92%, 1);
+    color: hsl(0, 70%, 40%);
+}
+
+.fo-total {
+    font-weight: 700;
+    color: var(--title-color);
+}
+
+.fo-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    color: var(--first-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.fo-detail-card {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color-alt);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.fo-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.fo-detail-meta {
+    color: var(--text-color-alt-3);
+    margin-bottom: 20px;
+}
+
+.fo-section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 16px 0 8px;
+}
+
+.fo-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fo-order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-color-alt);
+}
+
+.fo-order-total {
+    font-weight: 700;
+    border-bottom: none;
+    border-top: 1px solid var(--border-color-alt);
+    margin-top: 4px;
+    padding-top: 10px;
+}
+
+.fo-address {
+    color: var(--text-color-alt-2);
+}
