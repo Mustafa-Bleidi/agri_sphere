@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
-import Footer from '../../../components/common/Footer/Footer';
 import RentalRequestModal from '../../../components/cart/RentalRequestModal';
 import './farmerMarketplace.css';
 
@@ -167,7 +166,6 @@ const FarmerMarketplace = ({
                 />
             )}
 
-            <Footer />
         </div>
     );
 };

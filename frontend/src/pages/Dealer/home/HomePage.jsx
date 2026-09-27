@@ -1,7 +1,6 @@
 import React from 'react';
 import { Wrench, AlertTriangle, Star, TrendingUp } from "lucide-react";
 import './home.css';
-import Footer from '../../../components/common/Footer/Footer'
 const DashboardStatsCard = ({ title, value, subtitle, icon }) => (
   <div className="Home_Dealer_DashboardStatsCard">
     <div className="Home_Dealer_StatHeader">
@@ -80,11 +79,15 @@ const HomePage = ({
 
         <div className="Home_Dealer_RecentActivityCard">
           <h2 className="Home_Dealer_RecentActivityTitle">Recent Activity</h2>
-          <div className="Home_Dealer_ActivityList">
-            {recentActivity.map((activity, index) => (
-              <RecentActivityItem key={index} activity={activity} />
-            ))}
-          </div>
+          {recentActivity.length === 0 ? (
+            <p className="dashboard-page__state">No recent activity yet — list a product to get started.</p>
+          ) : (
+            <div className="Home_Dealer_ActivityList">
+              {recentActivity.map((activity, index) => (
+                <RecentActivityItem key={index} activity={activity} />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="Home_Dealer_BottomGrid">
@@ -109,7 +112,6 @@ const HomePage = ({
           />
         </div>
       </main>
-      <Footer/>
     </div>
   );
 };

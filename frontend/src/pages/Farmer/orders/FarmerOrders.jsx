@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Footer from '../../../components/common/Footer/Footer';
 import './farmerOrders.css';
 
 const statusOf = (order) => order.order_type === 'rental_order' ? order.rental_status : order.order_status;
@@ -35,7 +34,6 @@ const FarmerOrders = ({ orders, loading, error }) => (
             </div>
         )}
 
-        <Footer />
     </div>
 );
 

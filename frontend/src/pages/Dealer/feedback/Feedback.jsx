@@ -1,7 +1,6 @@
 import React from 'react';
 import { Star, TrendingUp, User } from "lucide-react";
 import './feedback.css';
-import Footer from '../../../components/common/Footer/Footer'
 const StarRating = ({ rating }) => (
   <div className="Feedback_Dealer__star-rating">
     {[1, 2, 3, 4, 5].map((star) => (
@@ -174,7 +173,6 @@ const FeedbackPage = ({
           </div>
         </div>
       </main>
-      <Footer/>
     </div>
   );
 };

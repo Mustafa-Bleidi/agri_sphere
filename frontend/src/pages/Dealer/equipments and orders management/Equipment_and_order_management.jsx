@@ -3,7 +3,6 @@ import './Equipment_and_order.css';
 import {
   Package, Edit, Plus, Trash2, X
 } from "lucide-react";
-import Footer from '../../../components/common/Footer/Footer'
 
 const TRANSMISSION_OPTIONS = ['automatic', 'manual', 'cvt', 'electric'];
 const FUEL_TYPE_OPTIONS = ['diesel', 'gasoline', 'electric', 'hybrid', 'plug-in_hybrid'];
@@ -311,7 +310,6 @@ const EquipmentAndOrdersPage = ({
           />
         )}
       </main>
-      <Footer/>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../../../components/common/Footer/Footer';
 import { getProfile, updateProfile } from '../../../api/account';
 import './farmerProfile.css';
 
@@ -130,7 +129,6 @@ const FarmerProfile = () => {
                 </button>
             </form>
 
-            <Footer />
         </div>
     );
 };
