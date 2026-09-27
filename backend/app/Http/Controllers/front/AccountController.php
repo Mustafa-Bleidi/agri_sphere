@@ -13,6 +13,7 @@ use App\Services\ResponseService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
@@ -20,17 +21,19 @@ use Intervention\Image\ImageManager;
 class AccountController extends Controller
 {
     public function register(StoreUserRequest $request) {
-        $user = UserService::storeUser($request);
+        DB::transaction(function () use ($request) {
+            $user = UserService::storeUser($request);
 
-        if ( $request->role == 'farmer' ) {
-            $user->syncRoles('farmer');
-        } else if ( $request->role == 'engineer' ) {
-            $user->syncRoles('engineer');
-        } else if ( $request->role == 'dealer' ) {
-            $user->syncRoles('dealer');
-        } else {
-            $user->syncRoles('farmer');
-        }
+            if ( $request->role == 'farmer' ) {
+                $user->syncRoles('farmer');
+            } else if ( $request->role == 'engineer' ) {
+                $user->syncRoles('engineer');
+            } else if ( $request->role == 'dealer' ) {
+                $user->syncRoles('dealer');
+            } else {
+                $user->syncRoles('farmer');
+            }
+        });
 
         return response()->json([
             'status' => 200,
