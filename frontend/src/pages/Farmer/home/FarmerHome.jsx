@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { ShoppingCart, ClipboardList, User as UserIcon, Package } from 'lucide-react';
-import Footer from '../../../components/common/Footer/Footer';
 import './farmerHome.css';
 
 const statusOf = (order) => order.order_type === 'rental_order' ? order.rental_status : order.order_status;
@@ -66,7 +65,6 @@ const FarmerHome = ({ userName, orders, ordersLoading, cartCount }) => {
                 </div>
             )}
 
-            <Footer />
         </div>
     );
 };

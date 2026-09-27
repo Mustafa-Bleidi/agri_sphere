@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router';
 import { Home as HomeIcon, Package, Star, Wrench, AlertTriangle } from 'lucide-react';
 
 import DashboardNav from '../../components/dashboard/DashboardNav';
+import DashboardFooter from '../../components/dashboard/DashboardFooter';
 import { useAuth } from '../../context/AuthContext';
 import { dealerProductApi } from '../../api/products';
 import { getCategories, getBrands } from '../../api/catalog';
@@ -262,6 +263,8 @@ function DealerDashboard() {
                     />
                 </Routes>
             </div>
+
+            <DashboardFooter />
         </div>
     );
 }

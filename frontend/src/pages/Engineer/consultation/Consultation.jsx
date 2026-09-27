@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Footer from '../../../components/common/Footer/Footer';
 import {Clock,Check,MessageSquare,Video,AlertTriangle,User,X,} from 'lucide-react';
 import './consultation.css';
 const ConsultationStats = ({ pendingRequests, scheduled, totalToday }) => (
@@ -202,7 +201,6 @@ const ConsultationsPage = ({
         handleReject={handleReject}
         handleOpenChat={handleOpenChat}
       />
-      <Footer/>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router';
 import { Home as HomeIcon, ShoppingCart, ClipboardList, User as UserIcon } from 'lucide-react';
 
 import DashboardNav from '../../components/dashboard/DashboardNav';
+import DashboardFooter from '../../components/dashboard/DashboardFooter';
 import CartModal from '../../components/cart/CartModal';
 import { useAuth } from '../../context/AuthContext';
 import { getPurchasedProducts, getRentalProducts } from '../../api/marketplace';
@@ -237,6 +238,8 @@ function FarmerDashboard() {
                     />
                 </Routes>
             </div>
+
+            <DashboardFooter />
 
             {showCart && (
                 <CartModal

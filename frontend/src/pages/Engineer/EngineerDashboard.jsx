@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router';
 import { Home as HomeIcon, MessageSquare, ShoppingCart, Video, Star } from 'lucide-react';
 
 import DashboardNav from '../../components/dashboard/DashboardNav';
+import DashboardFooter from '../../components/dashboard/DashboardFooter';
 import ProductModal from '../../components/ProductModal/ProductModal';
 import ChatModal from '../../components/Chat/ChatModal';
 import { useAuth } from '../../context/AuthContext';
@@ -243,6 +244,8 @@ function EngineerDashboard() {
                     />} />
                 </Routes>
             </div>
+
+            <DashboardFooter />
 
             {showProductModal && (
                 <ProductModal

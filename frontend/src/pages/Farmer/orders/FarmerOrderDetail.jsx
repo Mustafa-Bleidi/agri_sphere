@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
-import Footer from '../../../components/common/Footer/Footer';
 import { getOrderDetails } from '../../../api/orders';
 import './farmerOrders.css';
 
@@ -86,7 +85,6 @@ const FarmerOrderDetail = () => {
                 </div>
             )}
 
-            <Footer />
         </div>
     );
 };
