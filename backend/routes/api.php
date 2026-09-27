@@ -14,6 +14,7 @@ use App\Http\Controllers\farmer\OrderController as FarmerOrderController;
 use App\Http\Controllers\front\ProductController as FrontProductController;
 use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\TempImageController;
+use App\Http\Controllers\PlantDiagnosisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -149,5 +150,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::post('update-profile', [AccountController::class, 'updateProfile']);
         Route::post('save-user-image', [AccountController::class, 'saveUserImage']);
         Route::post('change-user-default-image', [AccountController::class, 'updateDefaultUserImage']);
+
+        // AI Routes (Plant disease/pest diagnosis via Gemini)
+        Route::post('diagnose-plant-image', [PlantDiagnosisController::class, 'diagnose']);
     });
 });
