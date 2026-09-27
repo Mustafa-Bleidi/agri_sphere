@@ -46,7 +46,7 @@ function Equipment() {
             {/* =============== FEATURES =============== */}
             <section className="features__equipment">
                 <SectionTitle
-                    subtitle='compelete soluation'
+                    subtitle='complete solution'
                     title='powerful features for dealers'
                     description={
                         'Everything you need to manage your agricultural equipment business efficiently and profitably.'

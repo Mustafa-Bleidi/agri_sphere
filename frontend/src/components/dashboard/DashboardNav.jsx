@@ -37,8 +37,8 @@ function DashboardNav({ title, links, userName, onLogout, cartCount, onCartClick
                         </button>
                     )}
                     <span className="dashboard-nav__user-name">{userName}</span>
-                    <button type="button" className="dashboard-nav__logout" onClick={onLogout}>
-                        <LogOut size={16} /> Log out
+                    <button type="button" className="dashboard-nav__logout" onClick={onLogout} aria-label="Log out">
+                        <LogOut size={16} /> <span className="dashboard-nav__logout-text">Log out</span>
                     </button>
                 </div>
             </div>
