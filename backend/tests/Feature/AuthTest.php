@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -83,5 +84,28 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(422);
+    }
+
+    public function test_a_failed_role_assignment_does_not_leave_an_orphaned_user_account(): void
+    {
+        // Regression test: register() used to save the user, then assign
+        // their role as a separate step. If role assignment failed for any
+        // reason (e.g. the roles table wasn't seeded in production), the
+        // user row was already committed with no role — the account existed
+        // but was permanently broken, and a retry with the same email got
+        // "already taken" instead of a working account. Wrapping both steps
+        // in one DB transaction fixes this: simulate the failure by removing
+        // the role the request asks for, and confirm no user row survives.
+        Role::where('name', 'farmer')->delete();
+
+        $this->postJson('/api/register', [
+            'username' => 'Test Farmer',
+            'email' => 'farmer@example.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+            'role' => 'farmer',
+        ])->assertStatus(500);
+
+        $this->assertDatabaseMissing('users', ['email' => 'farmer@example.com']);
     }
 }
