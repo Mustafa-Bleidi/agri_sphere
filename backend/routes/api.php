@@ -15,6 +15,7 @@ use App\Http\Controllers\front\ProductController as FrontProductController;
 use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\PlantDiagnosisController;
+use App\Http\Controllers\SmartAlertController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -113,6 +114,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::post('save-rental-order', [FarmerOrderController::class, 'saveRentalOrder']);
         Route::get('get-order-details/{id}', [AccountController::class, 'getOrderDetails']);
         Route::get('get-orders', [AccountController::class, 'getOrders']);
+
+        // Smart Alerts (AI-assisted weather/irrigation alerts)
+        Route::get('get-smart-alerts', [SmartAlertController::class, 'index']);
+        Route::post('generate-smart-alerts', [SmartAlertController::class, 'generate']);
+        Route::post('mark-alert-read/{id}', [SmartAlertController::class, 'markRead']);
+        Route::post('mark-all-alerts-read', [SmartAlertController::class, 'markAllRead']);
     });
 
     // ========== Engineer Routes (Engineer APIs) ==========
