@@ -19,7 +19,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    // In production, set CORS_ALLOWED_ORIGINS to a comma-separated list of
+    // the exact frontend origin(s) (e.g. https://agrisphere.vercel.app).
+    // Falls back to '*' only when it's left unset, which is fine for local
+    // development but should never be used once real users are involved.
+    'allowed_origins' => array_filter(explode(',', env('CORS_ALLOWED_ORIGINS', '*'))),
 
     'allowed_origins_patterns' => [],
 

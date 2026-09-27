@@ -10,9 +10,14 @@ class TrustProxies extends Middleware
     /**
      * The trusted proxies for this application.
      *
+     * Containers on platforms like Railway/Render only ever receive traffic
+     * through that platform's own load balancer, so trusting all proxies
+     * here is safe and is what lets Laravel see the real client IP/scheme
+     * from the X-Forwarded-* headers instead of the proxy's.
+     *
      * @var array<int, string>|string|null
      */
-    protected $proxies;
+    protected $proxies = '*';
 
     /**
      * The headers that should be used to detect proxies.
