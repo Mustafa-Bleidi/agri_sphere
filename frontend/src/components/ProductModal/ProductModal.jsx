@@ -1,151 +1,188 @@
 import React, { useState } from 'react';
-import { X, Edit2, Plus, Package } from 'lucide-react';
-import './modal.css'; 
+import { X } from 'lucide-react';
+import './modal.css';
 
-const ProductModal = ({ product, onSave, onClose }) => {
-  const [formData, setFormData] = useState(product || { name: '', price: '', quantity: '', unit: 'kg', category: 'seeds', image: '' });
-  const [imagePreview, setImagePreview] = useState(product?.image || '');
+const emptyForm = {
+    name: '',
+    sku: '',
+    category_id: '',
+    brand_id: '',
+    price: '',
+    compare_price: '',
+    stock_quantity: '',
+    short_description: '',
+    description: '',
+};
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file && file.size <= 5 * 1024 * 1024) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-        setFormData({ ...formData, image: reader.result });
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert('Image size should be less than 5MB');
-    }
-  };
+function productToForm(product) {
+    if (!product) return emptyForm;
 
-  const handleRemoveImage = () => {
-    setImagePreview('');
-    setFormData({ ...formData, image: '' });
-  };
+    return {
+        name: product.name ?? '',
+        sku: product.sku ?? '',
+        category_id: product.category_id ?? '',
+        brand_id: product.brand_id ?? '',
+        price: product.purchased_product?.price ?? '',
+        compare_price: product.purchased_product?.compare_price ?? '',
+        stock_quantity: product.stock_quantity ?? '',
+        short_description: product.short_description ?? '',
+        description: product.description ?? '',
+    };
+}
 
-  return (
-    <div className="harvest-overlay">
-      <div className="crop-card">
-        <h3 className="crop-title">{product ? 'Edit Product' : 'Add New Product'}</h3>
-        <div className="agri-form">
-          <div className="field-group">
-            <label className="field-label">Product Name</label>
-            <input
-              type="text"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="field-input"
-              placeholder="Product Name"
-            />
-          </div>
+const ProductModal = ({ product, categories = [], brands = [], onSave, onClose, saving = false, error = '' }) => {
+    const [formData, setFormData] = useState(() => productToForm(product));
 
-          <div className="field-row">
-            <div className="field-group">
-              <label className="field-label">Price (SYP)</label>
-              <input
-                type="number"
-                value={formData.price}
-                onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                className="field-input"
-              />
+    const handleChange = (field) => (event) => {
+        setFormData((prev) => ({ ...prev, [field]: event.target.value }));
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (!formData.name || !formData.sku || !formData.category_id || !formData.price) {
+            return;
+        }
+
+        onSave(formData);
+    };
+
+    return (
+        <div className="harvest-overlay">
+            <div className="crop-card">
+                <button type="button" className="modal-close-btn" onClick={onClose} aria-label="Close">
+                    <X size={20} />
+                </button>
+
+                <h3 className="crop-title">{product ? 'Edit Product' : 'Add New Product'}</h3>
+
+                {error && <p className="auth__error-message">{error}</p>}
+
+                <form className="agri-form" onSubmit={handleSubmit}>
+                    <div className="field-group">
+                        <label className="field-label">Product Name</label>
+                        <input
+                            type="text"
+                            value={formData.name}
+                            onChange={handleChange('name')}
+                            className="field-input"
+                            placeholder="Product Name"
+                            required
+                        />
+                    </div>
+
+                    <div className="field-row">
+                        <div className="field-group">
+                            <label className="field-label">SKU</label>
+                            <input
+                                type="text"
+                                value={formData.sku}
+                                onChange={handleChange('sku')}
+                                className="field-input"
+                                placeholder="Unique product code"
+                                required
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label className="field-label">Stock Quantity</label>
+                            <input
+                                type="number"
+                                value={formData.stock_quantity}
+                                onChange={handleChange('stock_quantity')}
+                                className="field-input"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="field-row">
+                        <div className="field-group">
+                            <label className="field-label">Price (SYP)</label>
+                            <input
+                                type="number"
+                                step="0.01"
+                                value={formData.price}
+                                onChange={handleChange('price')}
+                                className="field-input"
+                                required
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label className="field-label">Compare Price</label>
+                            <input
+                                type="number"
+                                step="0.01"
+                                value={formData.compare_price}
+                                onChange={handleChange('compare_price')}
+                                className="field-input"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="field-group">
+                        <label className="field-label">Category</label>
+                        <select
+                            value={formData.category_id}
+                            onChange={handleChange('category_id')}
+                            className="field-select"
+                            required
+                        >
+                            <option value="">Select category</option>
+                            {categories.map((category) => (
+                                <option key={category.category_id} value={category.category_id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="field-group">
+                        <label className="field-label">Brand</label>
+                        <select
+                            value={formData.brand_id}
+                            onChange={handleChange('brand_id')}
+                            className="field-select"
+                        >
+                            <option value="">No brand</option>
+                            {brands.map((brand) => (
+                                <option key={brand.brand_id} value={brand.brand_id}>
+                                    {brand.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="field-group">
+                        <label className="field-label">Short Description</label>
+                        <input
+                            type="text"
+                            value={formData.short_description}
+                            onChange={handleChange('short_description')}
+                            className="field-input"
+                        />
+                    </div>
+
+                    <div className="field-group">
+                        <label className="field-label">Description</label>
+                        <textarea
+                            value={formData.description}
+                            onChange={handleChange('description')}
+                            className="field-input"
+                            rows={3}
+                        />
+                    </div>
+
+                    <div className="action-bar">
+                        <button type="submit" className="confirm-btn" disabled={saving}>
+                            {saving ? 'Saving...' : 'Save Product'}
+                        </button>
+                        <button type="button" onClick={onClose} className="discard-btn">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div className="field-group">
-              <label className="field-label">Quantity</label>
-              <input
-                type="number"
-                value={formData.quantity}
-                onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                className="field-input"
-              />
-            </div>
-          </div>
-
-          <div className="field-group">
-            <label className="field-label">Unit</label>
-            <select
-              value={formData.unit}
-              onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
-              className="field-select"
-            >
-              <option value="kg">kg</option>
-              <option value="L">L</option>
-              <option value="units">units</option>
-            </select>
-          </div>
-
-          <div className="field-group">
-            <label className="field-label">Category</label>
-            <select
-              value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-              className="field-select"
-            >
-              <option value="seeds">Seeds</option>
-              <option value="fertilizer">Fertilizer</option>
-              <option value="insecticide">Insecticide</option>
-            </select>
-          </div>
-
-          <div className="field-group">
-            <label className="field-label">Product Image</label>
-            {imagePreview ? (
-              <div className="preview-area">
-                <img src={imagePreview} alt="preview" className="crop-image" />
-                <button onClick={handleRemoveImage} className="clear-btn icon-red">
-                  <X size={18} />
-                </button>
-                <button
-                  onClick={() => document.getElementById('image-upload').click()}
-                  className="replace-btn icon-blue"
-                >
-                  <Edit2 size={18} /> Change Image
-                </button>
-              </div>
-            ) : (
-              <div className="upload-zone">
-                <Package size={48} className="upload-icon" />
-                <p className="upload-text">Upload product image</p>
-                <button
-                  onClick={() => document.getElementById('image-upload').click()}
-                  className="upload-btn"
-                >
-                  Choose Image
-                </button>
-                <p className="upload-hint">Maximum size: 5MB</p>
-              </div>
-            )}
-            <input
-              id="image-upload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden-file-input"
-            />
-          </div>
         </div>
-
-        <div className="action-bar">
-          <button
-            onClick={() => {
-              if (formData.name && formData.price && formData.quantity && formData.image) {
-                onSave(formData);
-              } else {
-                alert('Fill all fields including image');
-              }
-            }}
-            className="confirm-btn"
-          >
-            Save Product
-          </button>
-          <button onClick={onClose} className="discard-btn">
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ProductModal;

@@ -1,0 +1,109 @@
+.dashboard-nav {
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--border-color-alt);
+    padding: 16px 32px 0;
+    position: sticky;
+    top: 0;
+    z-index: 500;
+}
+
+.dashboard-nav__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+}
+
+.dashboard-nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.dashboard-nav__logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.dashboard-nav__user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dashboard-nav__user-name {
+    font-weight: 600;
+    color: var(--text-color-alt-2);
+    text-transform: capitalize;
+}
+
+.dashboard-nav__logout {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--border-color-alt-3);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: var(--text-color-alt-2);
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.dashboard-nav__logout:hover {
+    border-color: var(--first-color);
+    color: var(--first-color);
+}
+
+.dashboard-nav__links {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.dashboard-nav__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px 10px 0 0;
+    color: var(--text-color-alt-3);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: 0.2s;
+}
+
+.dashboard-nav__link:hover {
+    color: var(--first-color);
+}
+
+.dashboard-nav__link.active {
+    color: var(--first-color);
+    border-bottom-color: var(--first-color);
+    background-color: var(--body-color-alt-2);
+}
+
+.dashboard-page {
+    background-color: var(--body-color);
+    min-height: 100vh;
+}
+
+.dashboard-page__content {
+    padding: 24px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-page__state {
+    padding: 40px;
+    text-align: center;
+    color: var(--text-color-alt-3);
+}

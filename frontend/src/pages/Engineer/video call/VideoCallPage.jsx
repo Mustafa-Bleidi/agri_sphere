@@ -1,6 +1,6 @@
 import React from 'react';
 import { Clock, Camera, Users, Video, X, Check } from 'lucide-react';
-import './videoCall.css';
+import './videocall.css';
 import Footer from '../../../components/common/Footer/Footer';
 const VideoCallStats = ({ upcomingCalls, completedCalls }) => (
   <div className="call-stats-section">
@@ -113,9 +113,7 @@ const VideoCallPage = ({
     const [hours, minutes] = newTime.split(':');
     const date = new Date(year, month - 1, day, hours, minutes);
 
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const dayName = days[date.getDay()];
     const monthName = months[date.getMonth()];
     const dayOfMonth = date.getDate();
     const formattedHours = date.getHours() % 12 || 12;

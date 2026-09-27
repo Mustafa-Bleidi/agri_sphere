@@ -3,7 +3,7 @@ import React from 'react';
 import { fqa_allUsers_questions, fqa_engineer_questions, fqa_equipment_questions, fqa_farmer_questions } from '../../../Data';
 
 import Layout from '../../../components/common/Layout';
-import CTAFooter from '../../../components/cta-footer/CTAFooter';
+import CTAFooter from '../../../components/cta-footer/CtaFooter';
 import Partners from '../../../components/partners/Partners';
 
 import './fqa.css';
@@ -93,9 +93,9 @@ function FQA() {
                                             answers &&
                                             <div className="fqa__question-answers">
                                                 {
-                                                    answers.map( ( element ) => {
+                                                    answers.map( ( element, answerIndex ) => {
                                                         return (
-                                                            <p className='fqa__question-answers-answer'>- {element}</p>
+                                                            <p key={answerIndex} className='fqa__question-answers-answer'>- {element}</p>
                                                         )
                                                     })
                                                 }
@@ -151,9 +151,9 @@ function FQA() {
                                             answers &&
                                             <div className="fqa__question-answer">
                                                 {
-                                                    answers.map( ( element ) => {
+                                                    answers.map( ( element, answerIndex ) => {
                                                         return (
-                                                            <p>- {element}</p>
+                                                            <p key={answerIndex}>- {element}</p>
                                                         )
                                                     })
                                                 }
