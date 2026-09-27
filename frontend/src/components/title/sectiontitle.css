@@ -48,7 +48,7 @@
 
 .section__title-title {
     height: 60px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-family: var(--inter-font);
     font-size: 48px;
     font-weight: var(--weight-700);

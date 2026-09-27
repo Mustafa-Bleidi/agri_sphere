@@ -97,7 +97,7 @@
     padding: 2px 8px;
     border-radius: 999px;
     background-color: var(--body-color-alt-2);
-    color: var(--first-color);
+    color: var(--title-color);
 }
 
 .fm-card-desc {

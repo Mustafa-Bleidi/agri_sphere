@@ -54,7 +54,7 @@
 
 .nav__link:hover,
 .active__nav-link {
-    color: var(--first-color);
+    color: var(--title-color);
 }
 
 .nav__link::after {
@@ -82,7 +82,7 @@
 }
 
 .nav__logo .nav__logo-txt {
-    color: var(--first-color);
+    color: var(--title-color);
     font-family: var(--second-font);
     font-size: 20px;
     font-weight: var(--weight-700);
@@ -90,7 +90,7 @@
 }
 
 .nav__logo .nav__logo-txt span {
-    color: black;
+    color: var(--title-color);
 }
 
 .nav__logo .nav__logo-img {
@@ -301,7 +301,7 @@ input:checked + .slider:before {
 .login__popup-forget-password {
     width: 121px;
     height: 10px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 12px;
     font-weight: var(--weight-600);
     line-height: 100%;
@@ -345,7 +345,7 @@ input:checked + .slider:before {
     display: inline-block;
     width: 53px;
     height: 13px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 12px;
     font-weight: var(--weight-900);
     text-decoration: underline;
@@ -530,7 +530,7 @@ input:checked + .slider:before {
     display: inline-block;
     width: 46px;
     height: 13px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 12px;
     font-weight: var(--weight-900);
     line-height: 100%;
@@ -596,7 +596,10 @@ input:checked + .slider:before {
     font-size: 14px;
     font-weight: var(--weight-400);
     text-align: center;
-    background-color: var(--black-color-alt-2);
+    /* Fixed, not var(--black-color-alt-2): that token is brightened for
+       dark-mode text legibility, which white button text needs the
+       opposite of as a background. */
+    background-color: hsla(0, 0%, 13%, 1);
     box-shadow: 0px 2px 3px 0px hsla(0, 0%, 0%, 0.17);
     cursor: pointer;
 }
@@ -674,7 +677,7 @@ input:checked + .slider:before {
 .header__account-link {
     font-size: 14px;
     font-weight: var(--weight-600);
-    color: var(--first-color);
+    color: var(--title-color);
     text-decoration: none;
 }
 
@@ -711,7 +714,7 @@ input:checked + .slider:before {
 .popup__close-btn:hover {
     transform: rotate(90deg);
     background-color: var(--border-color);
-    color: var(--first-color);
+    color: var(--title-color);
 }
 
 /* Interactive polish: inputs, buttons, socials and role cards inside the
@@ -803,7 +806,7 @@ input:checked + .slider:before {
     width: 38px;
     height: 38px;
     flex-shrink: 0;
-    color: var(--first-color);
+    color: var(--title-color);
     background-color: var(--surface-color);
     border: 1px solid var(--first-color);
     border-radius: 50%;

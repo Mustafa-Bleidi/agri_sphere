@@ -59,7 +59,7 @@
 
 .dashboard-nav__logout:hover {
     border-color: var(--first-color);
-    color: var(--first-color);
+    color: var(--title-color);
     transform: translateY(-1px);
 }
 
@@ -84,7 +84,7 @@
 }
 
 .dashboard-nav__link:hover {
-    color: var(--first-color);
+    color: var(--title-color);
     background-color: var(--body-color-alt-2);
 }
 
@@ -143,7 +143,7 @@
 }
 
 .dashboard-nav__link.active {
-    color: var(--first-color);
+    color: var(--title-color);
     border-bottom-color: var(--first-color);
     background-color: var(--body-color-alt-2);
 }
@@ -182,7 +182,7 @@
 
 .dashboard-nav__cart:hover {
     border-color: var(--first-color);
-    color: var(--first-color);
+    color: var(--title-color);
     transform: translateY(-1px);
 }
 

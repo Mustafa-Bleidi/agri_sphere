@@ -33,7 +33,7 @@
 .hero__farmer-title {
     max-width: 540px;
     padding: 10px;
-    color: var(--first-color);
+    color: var(--title-color);
     font-size: 60px;
     font-weight: var(--weight-700);
     line-height: 60px;
@@ -94,7 +94,7 @@
     grid-template-rows: repeat(3, 1fr);
     gap: 24px;
     padding: 32px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt-5);
     border-radius: 24px;
     box-shadow: 0px 25px 50px 0px hsla(0, 0%, 0%, 0.25);
@@ -164,14 +164,17 @@
 }
 
 .hero__farmer-card-data h6 {
-    color: var(--text-color);
+    /* Fixed, not theme-aware: these rows sit on fixed pastel gradients
+       (per-card nth-child colors below) that don't change with the
+       site theme, so the text must stay dark regardless of theme too. */
+    color: hsla(215, 14%, 34%, 1);
     font-size: 14px;
     font-weight: var(--weight-400);
     line-height: 20px;
 }
 
 .hero__farmer-card-data p {
-    color: var(--black-color-alt);
+    color: hsla(221, 39%, 11%, 1);
     font-size: 18px;
     font-weight: var(--weight-600);
     line-height: 28px;
@@ -193,7 +196,10 @@
     font-size: 12px;
     font-weight: var(--weight-500);
     line-height: 16px;
-    background-color: var(--title-color-alt-2);
+    /* Fixed, not var(--title-color-alt-2): that token is brightened for
+       dark-mode text legibility, which is too light for white text to
+       sit on as a badge background. */
+    background-color: hsla(142, 76%, 36%, 1);
     border-radius: 999px;
     text-transform: capitalize;
 }
@@ -236,7 +242,7 @@
     border: 1px solid var(--border-color);
     border-radius: 16px;
     box-shadow: 0px 10px 15px 0px hsla(0, 0%, 0%, 0.1);
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
 }
 
 .about__farmer-icon-wrapper {
