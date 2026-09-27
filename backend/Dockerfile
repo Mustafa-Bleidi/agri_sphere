@@ -1,7 +1,7 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-        git unzip libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libpq-dev \
+        git unzip libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libpq-dev libsqlite3-dev \
     && docker-php-ext-configure gd --with-jpeg --with-freetype \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite zip gd \
     && rm -rf /var/lib/apt/lists/*
