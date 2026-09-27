@@ -23,7 +23,7 @@ function App() {
   return (
     <AuthProvider>
       <AuthModalProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
             {/* Public marketing pages */}
             <Route path='/' element={<Home />} />
