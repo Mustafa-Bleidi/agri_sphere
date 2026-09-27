@@ -1,0 +1,62 @@
+.fp-page {
+    padding-bottom: 24px;
+}
+
+.fp-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 16px;
+}
+
+.fp-form {
+    max-width: 560px;
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color-alt);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fp-section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 12px 0 4px;
+}
+
+.fp-section-title:first-child {
+    margin-top: 0;
+}
+
+.fp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.fp-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-alt-3);
+    font-size: 14px;
+}
+
+.fp-save-btn {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fp-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
