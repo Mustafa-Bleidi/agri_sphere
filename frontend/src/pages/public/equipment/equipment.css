@@ -208,3 +208,81 @@
     padding-block: 60px 80px;
     padding-inline: 272px;
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 1300px) {
+    .features__equipment {
+        width: 100%;
+        margin-inline: 0;
+        padding-inline: 24px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero__equipment {
+        height: auto;
+        min-height: 560px;
+    }
+
+    .hero__equipment__container {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 60px;
+    }
+
+    .hero__equipment-title {
+        font-size: 38px;
+        line-height: 44px;
+    }
+
+    .hero__equipment-buttons {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 48px;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .features__equipment__wrapper,
+    .features__equipment__wrapper:nth-child(1),
+    .features__equipment__wrapper:nth-child(2) {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 32px;
+    }
+
+    .features__equipment-image-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 616 / 453;
+    }
+
+    .howItWorks__equipment {
+        padding-inline: 48px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero__equipment-title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .hero__equipment-description {
+        font-size: 16px;
+    }
+
+    .hero__equipment-buttons {
+        gap: 16px;
+    }
+
+    .hero__equipment-singin-btn,
+    .hero__equipment-singup-btn {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .howItWorks__equipment {
+        padding-inline: 20px;
+    }
+}

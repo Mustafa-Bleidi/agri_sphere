@@ -93,3 +93,30 @@
 .fqa__question:not(:last-child) {
     padding-bottom: 22px;
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 768px) {
+    .fqa__header-filter {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 16px;
+        padding-inline: 0;
+    }
+
+    .fqa__header-select {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .fqa__header-title {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .fqa__header-subtitle {
+        font-size: 22px;
+        line-height: 30px;
+        margin-block: 20px 18px;
+    }
+}

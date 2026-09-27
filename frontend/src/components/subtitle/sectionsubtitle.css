@@ -27,3 +27,16 @@
 .section__subtitle::after {
     left: calc(100% + 18px);
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 576px) {
+    .section__subtitle {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .section__subtitle::before,
+    .section__subtitle::after {
+        display: none;
+    }
+}

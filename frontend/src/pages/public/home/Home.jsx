@@ -66,11 +66,11 @@ function Home() {
                             Welcome to AgriSphere
                         </p>
 
-                        <h2 className="home__subtitle">Bring Growth Fresh Agricultur</h2>
+                        <h2 className="home__subtitle">Bring Growth Fresh Agriculture</h2>
 
                         <p className="home__description">
-                            Experience the ultimate golfing journey with expert tips,
-                            premium gear, and professional insights.
+                            Experience the future of farming with smart tools, real-time
+                            insights, and expert support at every step.
                         </p>
 
                         <div className="home__links">

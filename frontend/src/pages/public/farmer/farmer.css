@@ -351,6 +351,18 @@
     padding-inline: 261px;
 }
 
+@media screen and (max-width: 992px) {
+    .howItWorks__farmer {
+        padding-inline: 48px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .howItWorks__farmer {
+        padding-inline: 20px;
+    }
+}
+
 .howItWorks__farmer .section__title-title,
 .howItWorks__farmer .section__title-description {
     letter-spacing: 0;
@@ -465,4 +477,85 @@
     height: 100%;
     background: hsla(129, 18%, 35%, 0.2);
     z-index: -1;
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 1300px) {
+    .about__farmer-cards {
+        grid-template-columns: repeat(2, minmax(0, 356px));
+        grid-template-rows: none;
+    }
+
+    .about2__farmer-cards {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+        row-gap: 24px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero__farmer__container {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 40px;
+    }
+
+    .hero__farmer-title {
+        max-width: 100%;
+        font-size: 42px;
+        line-height: 48px;
+    }
+
+    .hero__farmer-description {
+        max-width: 100%;
+    }
+
+    .hero__farmer-card {
+        width: 100%;
+        max-width: 534px;
+        height: auto;
+        justify-self: center;
+    }
+
+    .about__farmer,
+    .about2__farmer {
+        padding-inline: 48px;
+    }
+
+    .about__farmer-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero__farmer-title {
+        font-size: 32px;
+        line-height: 40px;
+        padding-inline: 0;
+    }
+
+    .hero__farmer-description {
+        margin-left: 0;
+    }
+
+    .hero__farmer-buttons {
+        width: 100%;
+        margin-left: 0;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .hero__farmer-singup-btn,
+    .hero__farmer-singin-btn {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .about__farmer,
+    .about2__farmer {
+        padding-inline: 20px;
+    }
+
+    .about__farmer-cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }

@@ -98,3 +98,53 @@
     background: hsla(129, 18%, 35%, 0.2);
     z-index: -1;
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 992px) {
+    .howItWorks-cards {
+        width: 100%;
+        grid-template-columns: 1fr;
+        row-gap: 44px;
+        padding-top: 24px;
+    }
+
+    .howItWorks-card,
+    .howItWorks-card:nth-child(odd),
+    .howItWorks-card:nth-child(even) {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .howItWorks-card::before,
+    .howItWorks-card:nth-child(odd)::before,
+    .howItWorks-card:nth-child(even)::before {
+        top: -20px;
+        left: 24px;
+        right: auto;
+        transform: none;
+    }
+
+    .howItWorks-card::after,
+    .howItWorks-card:nth-child(odd)::after,
+    .howItWorks-card:nth-child(1)::after,
+    .howItWorks-card:nth-child(even)::after {
+        top: -20px;
+        left: 40px;
+        right: auto;
+        transform: none;
+    }
+
+    .howItWorks-vertical-line {
+        left: 44px;
+    }
+
+    .howItWorks-card-description {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .howItWorks-cards {
+        padding-inline: 8px;
+    }
+}
