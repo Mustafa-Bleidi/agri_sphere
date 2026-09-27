@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
-import { Home as HomeIcon, ShoppingCart, ClipboardList, User as UserIcon, Stethoscope } from 'lucide-react';
+import { Home as HomeIcon, ShoppingCart, ClipboardList, User as UserIcon, Stethoscope, Bell } from 'lucide-react';
 
 import DashboardNav from '../../components/dashboard/DashboardNav';
 import DashboardFooter from '../../components/dashboard/DashboardFooter';
@@ -16,11 +16,13 @@ import FarmerOrders from './orders/FarmerOrders';
 import FarmerOrderDetail from './orders/FarmerOrderDetail';
 import FarmerProfile from './profile/FarmerProfile';
 import FarmerDiagnosis from './diagnosis/FarmerDiagnosis';
+import FarmerAlerts from './alerts/FarmerAlerts';
 
 const NAV_LINKS = [
     { to: '/farmer/home', label: 'Home', icon: <HomeIcon size={18} />, end: true },
     { to: '/farmer/marketplace', label: 'Marketplace', icon: <ShoppingCart size={18} /> },
     { to: '/farmer/diagnosis', label: 'Plant Doctor', icon: <Stethoscope size={18} /> },
+    { to: '/farmer/alerts', label: 'Smart Alerts', icon: <Bell size={18} /> },
     { to: '/farmer/orders', label: 'My Orders', icon: <ClipboardList size={18} /> },
     { to: '/farmer/profile', label: 'Profile', icon: <UserIcon size={18} /> },
 ];
@@ -227,6 +229,7 @@ function FarmerDashboard() {
                     />
                     <Route path="orders/:id" element={<FarmerOrderDetail />} />
                     <Route path="diagnosis" element={<FarmerDiagnosis />} />
+                    <Route path="alerts" element={<FarmerAlerts />} />
                     <Route path="profile" element={<FarmerProfile />} />
                     <Route
                         path="*"
