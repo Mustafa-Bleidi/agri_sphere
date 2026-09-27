@@ -238,3 +238,104 @@
     padding-block: 40px 80px;
     padding-inline: 272px;
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 1300px) {
+    .hero__engineer__container {
+        gap: 48px;
+        margin-inline: 24px;
+    }
+
+    .hero__engineer-image-wrapper::before,
+    .hero__engineer-image-wrapper::after {
+        width: 100%;
+        max-width: 470px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero__engineer__container {
+        grid-template-columns: minmax(0, 1fr);
+        margin-inline: 24px;
+        padding-block: 32px;
+    }
+
+    .hero__engineer-content {
+        padding-left: 0;
+        order: 2;
+    }
+
+    .hero__engineer-image-wrapper {
+        order: 1;
+        justify-self: center;
+    }
+
+    .hero__engineer-img {
+        top: 0;
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        aspect-ratio: 470 / 400;
+    }
+
+    .hero__engineer-image-wrapper::before,
+    .hero__engineer-image-wrapper::after {
+        display: none;
+    }
+
+    .hero__engineer-title {
+        max-width: 100%;
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .hero__engineer-buttons {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .coreTools__engineer__container {
+        flex-wrap: wrap;
+    }
+
+    .howItWorks__engineer {
+        padding-inline: 48px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero__engineer-title {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .hero__engineer-title::before,
+    .hero__engineer-title::after {
+        display: none;
+    }
+
+    .hero__engineer-description {
+        max-width: 100%;
+        margin-block: 14px 32px;
+    }
+
+    .hero__engineer-buttons {
+        gap: 16px;
+    }
+
+    .hero__engineer-singin-btn,
+    .hero__engineer-singup-btn {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .howItWorks__engineer {
+        padding-inline: 20px;
+    }
+
+    .coreTools__engineer .section__title-title {
+        height: auto;
+        font-size: 26px;
+        line-height: 32px;
+    }
+}

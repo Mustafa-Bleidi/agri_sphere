@@ -65,3 +65,28 @@
     line-height: 32.5px;
     letter-spacing: 0.4px;
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 992px) {
+    .section__title-title {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .section__title-title {
+        font-size: 30px;
+        line-height: 38px;
+        margin-block: 24px 14px;
+    }
+
+    .section__title-description {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .section__title-sub::before,
+    .section__title-sub::after {
+        display: none;
+    }
+}

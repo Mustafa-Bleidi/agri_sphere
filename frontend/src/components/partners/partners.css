@@ -27,3 +27,21 @@
     width: 605px;
     height: 101px;
 }
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 992px) {
+    .partners {
+        width: 100%;
+        height: auto;
+        padding-inline: 24px;
+        gap: 24px;
+    }
+
+    .partner__logos {
+        width: 100%;
+        max-width: 605px;
+        height: auto;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+}

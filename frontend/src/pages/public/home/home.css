@@ -114,10 +114,11 @@
     line-height: 148%;
     text-align: center;
     vertical-align: middle;
+    white-space: nowrap;
 }
 
 .home__link-join-txt {
-    width: 105px;
+    width: fit-content;
     height: 36px;
     color: var(--first-color);
 }
@@ -880,4 +881,203 @@
 
 .fqa__more-questions a:hover {
     text-decoration: underline;
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 1300px) {
+    .services__container {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        row-gap: 48px;
+    }
+
+    .services__image-wrapper {
+        width: 100%;
+        max-width: 650px;
+        height: auto;
+        aspect-ratio: 650 / 742;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .home {
+        height: auto;
+        min-height: 700px;
+        padding-bottom: 4rem;
+    }
+
+    .home__container {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 40px;
+        column-gap: 0;
+        padding-top: 6.5rem;
+    }
+
+    .home__weather-widget {
+        margin-left: 0;
+        justify-self: center;
+    }
+
+    .about {
+        padding-inline: 48px;
+    }
+
+    .about__container {
+        margin-inline: 24px;
+        margin-top: 64px;
+    }
+
+    .services__description {
+        margin-inline: 24px;
+    }
+
+    .howItWorks__home__container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+    }
+
+    .howItWorks__home__horizontal-line {
+        display: none;
+    }
+
+    .benefits {
+        padding-inline: 48px;
+    }
+
+    .benefits__cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: none;
+    }
+
+    .cropSoluations {
+        min-height: auto;
+        padding-inline: 48px;
+    }
+
+    .cropSoluations__cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: none;
+    }
+
+    .cropSoluations__card-header {
+        padding-inline: 40px;
+    }
+
+    .fqa {
+        padding-inline: 48px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .home__title {
+        font-size: 36px;
+        line-height: 130%;
+    }
+
+    .home__subtitle {
+        max-width: 100%;
+        font-size: 32px;
+    }
+
+    .home__description {
+        max-width: 100%;
+        font-size: 17px;
+        margin-bottom: 40px;
+    }
+
+    .home__links {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .join-now-link,
+    .learn-more-link {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .home__weather-widget {
+        width: 100%;
+        max-width: 281px;
+        height: auto;
+    }
+
+    .about {
+        padding-inline: 20px;
+    }
+
+    .about__container {
+        margin-inline: 0;
+        margin-top: 40px;
+    }
+
+    .about__description {
+        font-size: 17px;
+    }
+
+    .services__title-txt {
+        font-size: 26px;
+        margin-left: 0;
+    }
+
+    .services__description {
+        margin-inline: 4px;
+    }
+
+    .howItWorks__home__container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .benefits {
+        padding-inline: 20px;
+    }
+
+    .benefits__cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .benefits__card {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .cropSoluations {
+        padding-inline: 20px;
+    }
+
+    .cropSoluations__cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cropSoluations__card-header {
+        padding-inline: 20px;
+    }
+
+    .cropSoluations__card-data {
+        flex-wrap: wrap;
+    }
+
+    .cropSoluations__card-data div {
+        width: 100%;
+    }
+
+    .cropSoluations__card-btn {
+        padding-inline: 20px;
+    }
+
+    .fqa {
+        padding-inline: 20px;
+    }
+
+    .fqa__card {
+        height: auto;
+        min-height: 64px;
+    }
+
+    .fqa__card-question {
+        font-size: 16px;
+    }
 }

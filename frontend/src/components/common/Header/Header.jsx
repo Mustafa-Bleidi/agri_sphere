@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
+import { Menu, X } from 'lucide-react';
 
 import { public_links, roles } from '../../../Data';
 import { useAuth } from '../../../context/AuthContext';
@@ -149,7 +150,7 @@ function Header() {
                                                 className={ ( { isActive } ) =>
                                                     isActive ? 'nav__link active__nav-link' : 'nav__link'
                                                 }
-                                                onClick={ () => setShowMenu(!showMenu)}
+                                                onClick={ () => setShowMenu(false)}
                                             >
                                                 {name}
                                             </NavLink>
@@ -161,6 +162,17 @@ function Header() {
                     </div>
 
                     <div className='header__user-actions'>
+                        <button
+                            type="button"
+                            className="nav__toggle"
+                            aria-label={showMenu ? 'Close menu' : 'Open menu'}
+                            aria-expanded={showMenu}
+                            aria-controls="nav-menu"
+                            onClick={() => setShowMenu(!showMenu)}
+                        >
+                            {showMenu ? <X size={22} /> : <Menu size={22} />}
+                        </button>
+
                         <div className="theme__toggle" id="theme-toggle">
                             <label htmlFor="" className="switch">
                                 <input type="checkbox" name="" id="" />

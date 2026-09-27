@@ -718,3 +718,128 @@ input:checked + .slider:before {
     border-color: var(--first-color);
     background-color: hsla(220, 13%, 96%, 1);
 }
+
+/* =============== NAV TOGGLE (MOBILE) =============== */
+.nav__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    color: var(--first-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--first-color);
+    border-radius: 50%;
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 1150px) {
+    .nav__list {
+        width: auto;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .nav__toggle {
+        display: flex;
+    }
+
+    .nav__menu {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 1.2rem;
+        right: 1.2rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height .3s ease, opacity .3s ease;
+    }
+
+    .nav__menu.show__menu {
+        max-height: 70vh;
+        overflow-y: auto;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        height: auto;
+        gap: 4px;
+        padding: 14px;
+        background-color: var(--white-color);
+        border-radius: 20px;
+        box-shadow: 0px 10px 25px 0px hsla(0, 0%, 0%, 0.15);
+    }
+
+    .nav__item {
+        width: 100%;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 12px 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .header {
+        inset: 12px 0 auto;
+    }
+
+    .nav__logo {
+        width: auto;
+        padding: 2px 14px 11px 14px;
+    }
+
+    .nav__logo .nav__logo-txt {
+        font-size: 17px;
+    }
+
+    .header__user-actions {
+        width: auto;
+        gap: 10px;
+    }
+
+    .theme__toggle {
+        display: none;
+    }
+
+    .header__account-name {
+        display: none;
+    }
+}
+
+/* =============== RESPONSIVE POPUPS =============== */
+@media screen and (max-width: 480px) {
+    .login__popup-inner {
+        width: min(350px, 100%);
+    }
+
+    .register__popup-inner {
+        width: min(435px, 100%);
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .forgetpassword__popup-inner {
+        width: min(400px, 100%);
+    }
+
+    .login__popup-title,
+    .login__popup-input,
+    .login__popup-btn,
+    .login__popup-socials,
+    .login__popup-social,
+    .register__popup-title,
+    .register__popup-input,
+    .register__popup-btn {
+        width: 100% !important;
+    }
+}
