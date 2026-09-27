@@ -23,7 +23,7 @@
 }
 
 .fqa__header-subtitle {
-    color: var(--black-color);
+    color: var(--text-color-alt);
     font-size: 32px;
     font-weight: var(--weight-400);
     line-height: 40px;
@@ -42,11 +42,12 @@
     width: 273px;
     height: 45px;
     padding: 4px 3px;
-    color: var(--black-color);
+    color: var(--text-color-alt);
     font-size: 16px;
     font-weight: var(--weight-400);
     line-height: 23px;
-    border: 1px solid hsla(0, 0%, 0%, 0.23);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color-alt-3);
 }
 
 /* =============== FQA QUESTIONS =============== */

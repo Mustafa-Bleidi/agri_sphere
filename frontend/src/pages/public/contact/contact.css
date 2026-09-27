@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: hsla(141, 84%, 93%, 1);
+    background-color: var(--border-color-alt-5);
     border-radius: 8px;
 }
 
@@ -256,13 +256,13 @@
 
 .contact__form-select {
     padding: 13px 16px;
-    color: var(--black-color);
+    color: var(--text-color-alt);
     font-size: 16px;
     font-weight: var(--weight-400);
     line-height: 100%;
     border: none;
     border-radius: 8px;
-    background-color: hsla(0, 0%, 85%, 1);
+    background-color: var(--surface-color-alt);
     vertical-align: middle;
 }
 

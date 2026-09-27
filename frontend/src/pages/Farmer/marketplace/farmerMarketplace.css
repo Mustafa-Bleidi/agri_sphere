@@ -26,7 +26,7 @@
     padding: 8px 18px;
     border-radius: 8px;
     border: 1px solid var(--border-color-alt-3);
-    background: var(--white-color);
+    background: var(--surface-color);
     cursor: pointer;
     font-weight: 500;
 }
@@ -54,7 +54,7 @@
 }
 
 .fm-card {
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color-alt);
     border-radius: 12px;
     overflow: hidden;
@@ -72,8 +72,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9ca3af;
-    background-color: #f3f4f6;
+    color: var(--text-color-alt-4);
+    background-color: var(--surface-color-alt);
     font-size: 13px;
 }
 

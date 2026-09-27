@@ -10,7 +10,7 @@
 
 .cart-card {
     position: relative;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border-radius: 12px;
     padding: 24px;
     width: 420px;

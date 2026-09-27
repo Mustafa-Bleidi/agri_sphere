@@ -15,6 +15,23 @@
     background-color: var(--body-color-alt-3);
     border-radius: 8px;
     box-shadow: 0px 4px 6px -1px hsla(0, 0%, 0%, 0.1);
+    transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .25s ease, background-color .35s ease;
+    animation: how-it-works-card-in .5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.howItWorks-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 10px 20px -4px hsla(0, 0%, 0%, 0.18);
+}
+
+.howItWorks-card:nth-child(1) { animation-delay: .05s; }
+.howItWorks-card:nth-child(2) { animation-delay: .15s; }
+.howItWorks-card:nth-child(3) { animation-delay: .25s; }
+.howItWorks-card:nth-child(4) { animation-delay: .35s; }
+
+@keyframes how-it-works-card-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .howItWorks-card:nth-child(odd) {
@@ -97,6 +114,10 @@
     height: 100%;
     background: hsla(129, 18%, 35%, 0.2);
     z-index: -1;
+}
+
+:root[data-theme="dark"] .howItWorks-vertical-line {
+    background: hsla(96, 45%, 62%, 0.3);
 }
 
 /* =============== RESPONSIVE =============== */

@@ -38,6 +38,15 @@
     --black-color-alt-2: hsla(0, 0%, 13%, 1);
     --black-color-alt-3: hsla(0, 0%, 20%, 1);
 
+    /* Theme-aware surfaces: use these (not --white-color) for card/panel/
+       popup/input backgrounds so they invert correctly in dark mode.
+       --white-color itself stays literal white in both themes, since every
+       remaining use of it is white text sitting on an already-dark or
+       colored background. */
+    --surface-color: hsla(0, 0%, 100%, 1);
+    --surface-color-alt: hsla(0, 0%, 97%, 1);
+    --overlay-color: hsla(220, 25%, 6%, 0.55);
+
     /* Background Colors */
     --blue-bg-color: hsla(217, 91%, 60%, 1);
     --green-bg-color: hsla(142, 71%, 45%, 1);
@@ -102,6 +111,62 @@
     }
 }
 
+/*=============== DARK THEME ===============*/
+:root[data-theme="dark"] {
+    --title-color: hsla(96, 55%, 68%, 1);
+    --title-color-alt: hsla(142, 55%, 62%, 1);
+    --title-color-alt-2: hsla(142, 60%, 66%, 1);
+
+    --text-color: hsla(210, 16%, 78%, 1);
+    --text-color-alt: hsla(210, 25%, 92%, 1);
+    --text-color-alt-2: hsla(210, 20%, 88%, 1);
+    --text-color-alt-3: hsla(210, 12%, 68%, 1);
+    --text-color-alt-4: hsla(210, 10%, 56%, 1);
+
+    --input-color: hsla(0, 0%, 78%, 1);
+    --input-color-alt: hsla(0, 0%, 66%, 1);
+    --nav-color: hsla(113, 12%, 68%, 1);
+
+    --body-color: hsla(222, 22%, 9%, 1);
+    --body-color-alt: hsla(222, 20%, 12%, 1);
+    --body-color-alt-2: hsla(222, 20%, 11%, 1);
+    --body-color-alt-3: hsla(222, 20%, 13%, 1);
+
+    --border-color: hsla(220, 15%, 22%, 1);
+    --border-color-alt: hsla(220, 14%, 26%, 1);
+    --border-color-alt-2: hsla(96, 45%, 62%, 0.3);
+    --border-color-alt-3: hsla(0, 0%, 32%, 1);
+    --border-color-alt-4: hsla(216, 12%, 30%, 1);
+    --border-color-alt-5: hsla(141, 30%, 24%, 1);
+
+    --black-color-alt: hsla(210, 25%, 92%, 1);
+    --black-color-alt-2: hsla(210, 25%, 94%, 1);
+    --black-color-alt-3: hsla(210, 20%, 88%, 1);
+
+    --surface-color: hsla(222, 20%, 15%, 1);
+    --surface-color-alt: hsla(222, 20%, 13%, 1);
+    --overlay-color: hsla(220, 30%, 3%, 0.7);
+
+    color-scheme: dark;
+}
+
+/* Smooth, professional theme switch: every themed surface/text/border
+   property fades between palettes instead of snapping. */
+body,
+header, nav, footer, section, div, a, p, h1, h2, h3, h4, h5, h6,
+button, input, textarea, select, li, span, img {
+    transition: background-color .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 /*=============== BASE ===============*/
 * {
     margin: 0;
@@ -117,7 +182,7 @@ body {
 }
 
 body {
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     color: var(--text-color)
 }
 
@@ -173,18 +238,6 @@ img {
 .flex {
     display: flex;
 }
-/* Reset and base styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: #f9fafb;
-}
-
 /* Icon sizes and colors */
 .icon-size {
   width: 1.5rem;
@@ -192,7 +245,7 @@ body {
 }
 
 .icon-gray-600 {
-  color: #4b5563;
+  color: var(--text-color-alt-2);
 }
 
 .icon-yellow-500 {
@@ -269,11 +322,17 @@ body {
   font-size: 0.875rem;
   cursor: pointer;
   border: none;
-  transition: all 0.2s;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .btn:hover {
   transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .btn-sm {
@@ -338,12 +397,12 @@ body {
 }
 
 .stat-card {
-  background-color: white;
+  background-color: var(--surface-color);
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s, box-shadow 0.2s, background-color .35s ease, border-color .35s ease;
 }
 
 .stat-card:hover {
@@ -360,7 +419,7 @@ body {
 
 .stat-card-title {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--text-color-alt-3);
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
@@ -368,23 +427,23 @@ body {
 .stat-card-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-color-alt);
   line-height: 1.2;
 }
 
 .stat-card-subtitle {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--text-color-alt-3);
   margin-top: 0.5rem;
 }
 
 /* Table styles */
 .table-container {
-  background-color: white;
+  background-color: var(--surface-color);
   border-radius: 0.75rem;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
 }
 
 .table {
@@ -393,21 +452,21 @@ body {
 }
 
 .table th {
-  background-color: #f9fafb;
+  background-color: var(--surface-color-alt);
   padding: 0.75rem 1.5rem;
   text-align: left;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--text-color-alt-3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .table td {
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  color: #374151;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color-alt-2);
 }
 
 .table tbody tr:last-child td {
@@ -415,7 +474,7 @@ body {
 }
 
 .table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--surface-color-alt);
 }
 
 /* Modal/dialog styles */
@@ -425,22 +484,34 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--overlay-color);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 50;
   padding: 1rem;
+  animation: modal-overlay-in .25s ease;
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--surface-color);
   border-radius: 0.75rem;
   max-width: 28rem;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  animation: modal-content-in .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-content-in {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .modal-header {
@@ -450,7 +521,7 @@ body {
 .modal-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--text-color-alt);
 }
 
 .modal-body {
@@ -462,7 +533,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border-color);
 }
 
 /* Form styles */
@@ -474,40 +545,40 @@ body {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--text-color-alt-2);
   margin-bottom: 0.375rem;
 }
 
 .form-input {
   width: 100%;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color-alt-4);
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  color: #374151;
-  background-color: white;
+  color: var(--text-color-alt-2);
+  background-color: var(--surface-color);
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--blue-bg-color);
+  box-shadow: 0 0 0 3px hsla(217, 91%, 60%, 0.15);
 }
 
 .form-select {
   width: 100%;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color-alt-4);
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  color: #374151;
-  background-color: white;
+  color: var(--text-color-alt-2);
+  background-color: var(--surface-color);
 }
 
 .form-select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--blue-bg-color);
+  box-shadow: 0 0 0 3px hsla(217, 91%, 60%, 0.15);
 }
 
 .actions-container {

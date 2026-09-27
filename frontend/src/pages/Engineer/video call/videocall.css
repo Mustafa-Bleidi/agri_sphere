@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: white;
+  background-color: var(--surface-color);
   color: #7e22ce;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -40,7 +40,7 @@
   transition: background-color 0.2s;
 }
 .start-call-button:hover {
-  background-color: #f3f4f6;
+  background-color: var(--surface-color-alt);
 }
 .call-stats-section {
   display: grid;
@@ -53,8 +53,8 @@
   }
 }
 .stat-card {
-  background-color: white;
-  border: 1px solid #e5e7eb;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   padding: 1.5rem;
@@ -73,11 +73,11 @@
 .icon--schedule { color: #a855f7; }   
 .icon--completed { color: #22c55e; }  
 .icon--total { color: #3b82f6; }      
-.icon--user { color: #9ca3af; }       
+.icon--user { color: var(--text-color-alt-4); }       
 .icon--user-completed { color: #22c55e; } 
 .upcoming-calls-section {
-  background-color: white;
-  border: 1px solid #e5e7eb;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   padding: 1.5rem;
@@ -88,7 +88,7 @@
   margin: 0 0 1rem 0;
 }
 .upcoming-call-card {
-  background-color: #f9fafb;
+  background-color: var(--surface-color-alt);
   padding: 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
@@ -112,7 +112,7 @@
   margin: 0;
 }
 .call-topic {
-  color: #4b5563;
+  color: var(--text-color-alt-2);
   margin: 0;
 }
 .call-time {
@@ -120,7 +120,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--text-color-alt-3);
 }
 .call-actions {
   display: flex;
@@ -147,15 +147,15 @@
   background-color: #6b21a8; 
 }
 .reschedule-button {
-  background-color: #e5e7eb;
-  color: #1f2937;
+  background-color: var(--border-color);
+  color: var(--text-color-alt);
 }
 .reschedule-button:hover {
-  background-color: #d1d5db;
+  background-color: var(--border-color-alt-4);
 }
 .completed-calls-section {
-  background-color: white;
-  border: 1px solid #e5e7eb;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   padding: 1.5rem;
@@ -165,7 +165,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 .completed-call-item:last-child {
   border-bottom: none;
@@ -179,7 +179,7 @@
   margin: 0 0 0.25rem 0;
 }
 .completed-call-topic {
-  color: #4b5563;
+  color: var(--text-color-alt-2);
   margin: 0 0 0.25rem 0;
 }
 .modal-overlay {
@@ -206,7 +206,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #4b5563;
+  color: var(--text-color-alt-2);
   transition: background-color 0.2s;
 }
 .close-modal-button:hover {
@@ -216,7 +216,7 @@
   position: relative;
   width: 100%;
   max-width: 26rem;
-  background-color: white;
+  background-color: var(--surface-color);
   border-radius: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   padding: 2.5rem 2rem 2rem;
@@ -239,12 +239,12 @@
 .call-connect-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-color-alt);
   margin: 0 0 0.5rem;
 }
 .call-connect-description {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--text-color-alt-3);
   line-height: 1.6;
   margin: 0 0 1.75rem;
 }
@@ -257,8 +257,8 @@
   height: 3rem;
   border-radius: 50%;
   border: none;
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--surface-color-alt);
+  color: var(--text-color-alt-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,7 +276,7 @@
   background-color: #dc2626;
 }
 .reschedule-modal {
-  background-color: white;
+  background-color: var(--surface-color);
   border-radius: 0.5rem;
   padding: 1.5rem;
   width: 100%;
@@ -294,13 +294,13 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--text-color-alt-2);
   margin-bottom: 0.5rem;
 }
 .form-input {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color-alt-4);
   border-radius: 0.5rem;
   font-size: 1rem;
 }
@@ -331,9 +331,9 @@
   background-color: #16a34a;
 }
 .cancel-button {
-  background-color: #e5e7eb;
-  color: #1f2937;
+  background-color: var(--border-color);
+  color: var(--text-color-alt);
 }
 .cancel-button:hover {
-  background-color: #d1d5db;
+  background-color: var(--border-color-alt-4);
 }

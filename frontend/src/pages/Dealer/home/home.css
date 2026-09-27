@@ -12,7 +12,7 @@ body {
 
 .Home_Dealer_Container {
   min-height: 100vh;
-  background-color: #f8fafc;
+  background-color: var(--surface-color-alt);
   width: 100vw;
   max-width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -33,11 +33,11 @@ body {
 }
 
 .Home_Dealer_DashboardStatsCard {
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
 }
@@ -57,7 +57,7 @@ body {
 
 .Home_Dealer_StatTitle {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--text-color-alt-3);
   margin-bottom: 0.25rem;
   font-weight: 500;
 }
@@ -65,13 +65,13 @@ body {
 .Home_Dealer_StatValue {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-color-alt);
   line-height: 1.2;
 }
 
 .Home_Dealer_StatSubtitle {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--text-color-alt-4);
   margin-top: 0.5rem;
 }
 
@@ -82,11 +82,11 @@ body {
 }
 
 .Home_Dealer_RecentActivityCard {
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   margin-bottom: 2rem;
   width: 100%;
 }
@@ -95,7 +95,7 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #1e293b;
+  color: var(--text-color-alt);
 }
 
 .Home_Dealer_ActivityList {
@@ -110,7 +110,7 @@ body {
   gap: 1rem;
   align-items: flex-start;
   padding: 0.75rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--surface-color-alt);
   width: 100%;
 }
 
@@ -126,7 +126,7 @@ body {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.5rem;
-  background-color: #f8fafc;
+  background-color: var(--surface-color-alt);
 }
 
 .Home_Dealer_Icon_Star {
@@ -160,14 +160,14 @@ body {
 
 .Home_Dealer_ActivityText {
   font-size: 0.875rem;
-  color: #334155;
+  color: var(--text-color-alt-2);
   margin-bottom: 0.25rem;
   line-height: 1.4;
 }
 
 .Home_Dealer_ActivityTime {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--text-color-alt-3);
   display: flex;
   align-items: center;
   gap: 0.375rem;
@@ -176,7 +176,7 @@ body {
 .Home_Dealer_ClockIcon {
   width: 0.875rem;
   height: 0.875rem;
-  color: #94a3b8;
+  color: var(--text-color-alt-4);
 }
 
 .Home_Dealer_BottomGrid {
@@ -187,11 +187,11 @@ body {
 }
 
 .Home_Dealer_StatsSection {
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   width: 100%;
 }
 
@@ -199,7 +199,7 @@ body {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
-  color: #1e293b;
+  color: var(--text-color-alt);
 }
 
 .Home_Dealer_StatsList {
@@ -213,7 +213,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--surface-color-alt);
 }
 
 .Home_Dealer_StatRow:last-child {
@@ -222,13 +222,13 @@ body {
 
 .Home_Dealer_StatLabel {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--text-color-alt-3);
   font-weight: 500;
 }
 
 .Home_Dealer_StatValueInline {
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-color-alt);
   font-size: 0.9375rem;
 }
 
@@ -238,8 +238,8 @@ body {
 }
 
 .Home_Dealer_StatusBadge {
-  background-color: #f1f5f9;
-  color: #334155;
+  background-color: var(--surface-color-alt);
+  color: var(--text-color-alt-2);
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.25rem 0.75rem;
